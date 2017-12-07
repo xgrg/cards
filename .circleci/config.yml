@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+
+      - image: circleci/python:2.7.13
+
+    steps:
+      - checkout
+
+      - run:
+          name: install dependencies
+          command: |
+            git config --global user.email goperto@gmail.com
+            python -m virtualenv virtualenv
+            . virtualenv/bin/activate
+            pip install nose coverage markdown_to_json ghp-import markdown tabulate pandas lxml
+
+      - run:
+          name: run tests
+          command: |
+            . virtualenv/bin/activate
+            nosetests --nologcapture  --logging-level=INFO --with-coverage tests
+            coverage report --include '*cards*' -m
+
+
+      - run:
+          name: build site and commit to gh-pages
+          command: |
+            . virtualenv/bin/activate
+            python ./build.py
