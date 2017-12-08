@@ -19,6 +19,6 @@ function a1(){ return (vartable["lang"]=="fr"); };return (a1());
 }],]
 }
 
-$(document).ready(function(){
-  storylets.push(Test2);
-});
+preload_list = ["images/image_chat.jpg", "audio/music_bg.mp3"]
+
+storylets.push(Test2);

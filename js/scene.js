@@ -35,12 +35,6 @@ function getJsonFromUrl(url) {
   return result;
 }
 
-function reset_bodybox(){
-  console.log("reset")
-  $("#dialogbox").html("");
-  $("#choicebox").html("");
-  $("#imagebox").html("");
-}
 
 function addLink(text, vars, id){
   var newtable = copyMap(vartable);
@@ -171,10 +165,11 @@ function run_machine() {
 // MAIN FUNCTION
 
 $( document ).ready(function() {
-  preload();
-  var bgMusic = $('audio')[0];
+
   var f = QueryString.f;
   var b64 = QueryString.d;
+  fullscreen = parseInt(QueryString.fs);
+
 
   console.log('file ' + f)
   if (b64 !== undefined){
@@ -185,6 +180,7 @@ $( document ).ready(function() {
   }
   if (f===undefined){ f = 'story'}
   scenefile = f;
-
-  loadScript('md/'+f+'.js', run_machine)
+  preload(function(){
+     loadScript('md/'+f+'.js', run_machine)
+  });
 });

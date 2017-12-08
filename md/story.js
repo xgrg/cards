@@ -223,19 +223,19 @@ function a1(){ return (vartable["@action"]=="ExplorerAutresPièces"); };return (
 choices:[["Continuer", {"@action": "exploreroom"}],]
 }
 
-$(document).ready(function(){
-  storylets.push(Test);
-  storylets.push(Test2);
-  storylets.push(Scene1);
-  storylets.push(Scene2);
-  storylets.push(SceneLookAround);
-  storylets.push(SceneTrySwitch);
-  storylets.push(ScenePhone);
-  storylets.push(SceneExplorePhoneLight);
-  storylets.push(SceneRemonterVolets);
-  storylets.push(ExplorerAvecVoletsRemontés);
-  storylets.push(ApprocherSalon);
-  storylets.push(ApprocherCuisine);
-  storylets.push(ApprocherBureau);
-  storylets.push(ApprocherAutresPièces);
-});
+preload_list = ["images/bois.jpg", "audio/bg.mp3"]
+
+storylets.push(Test);
+storylets.push(Test2);
+storylets.push(Scene1);
+storylets.push(Scene2);
+storylets.push(SceneLookAround);
+storylets.push(SceneTrySwitch);
+storylets.push(ScenePhone);
+storylets.push(SceneExplorePhoneLight);
+storylets.push(SceneRemonterVolets);
+storylets.push(ExplorerAvecVoletsRemontés);
+storylets.push(ApprocherSalon);
+storylets.push(ApprocherCuisine);
+storylets.push(ApprocherBureau);
+storylets.push(ApprocherAutresPièces);

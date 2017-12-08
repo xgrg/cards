@@ -12,6 +12,6 @@ return (true);
 
 }
 
-$(document).ready(function(){
-  storylets.push(Test);
-});
+preload_list = []
+
+storylets.push(Test);
