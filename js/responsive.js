@@ -4,6 +4,32 @@ function adjustimg(){
                             //'border': '1px solid white'})
 }
 
+function preload(){
+  var arrayOfImages = []; //, 'media/bg.mp3']
+  $(arrayOfImages).each(function(i){   // Note the argument
+    var image = document.createElement('img');
+    console.log( arrayOfImages[i]);
+    image.setAttribute('src', arrayOfImages[i]);
+  });
+  var arrayOfImages = []
+  $(arrayOfImages).each(function(i){   // Note the argument
+    console.log( arrayOfImages[i]);
+    var image = document.createElement('source');
+    image.setAttribute('src', arrayOfImages[i]);
+  });
+}
+
+function loadScript(url, callback)
+{
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    head.appendChild(script);
+}
+
 h = window.innerHeight
 w = window.innerWidth
 if (w<h){ orientation = 'vertical'; }

@@ -1,6 +1,6 @@
 Test2 = {
   name: 'Test2',
-  ,audio:"music_bg",
+  audio:"music_bg",
   conditions:function(){
     
 function a1(){ return (vartable["lang"]=="fr"); };return (a1());
