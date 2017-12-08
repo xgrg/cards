@@ -202,7 +202,7 @@ def json_to_javascript(j, preamble={}):
     # Ends with listing all the scenes in the `ready` function
     pushlist = ''
     for sc_name, _ in j.items():
-        pushlist = pushlist + '  storylets.push(%s);\n'%sc_name
+        pushlist = pushlist + 'storylets.push(%s);\n'%sc_name
 
-    js = js + '$(document).ready(function(){\n%s});'%pushlist
+    js = js + pushlist
     return js
