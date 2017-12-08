@@ -35,6 +35,13 @@ function getJsonFromUrl(url) {
   return result;
 }
 
+function reset_bodybox(){
+  console.log("reset")
+  $("#dialogbox").html("");
+  $("#choicebox").html("");
+  $("#imagebox").html("");
+}
+
 function addLink(text, vars, id){
   var newtable = copyMap(vartable);
   for (var i in vars)
@@ -48,14 +55,16 @@ function addLink(text, vars, id){
   $("div#choice"+id).addClass("choice")
   $('#choice'+id).animateCss('fadeIn');
   $("div#choice"+id).click(function(e){
-    e.preventDefault();
-    url = $(this).find('a')[0].href;
-    b64 = getJsonFromUrl(url).d;
-    console.log(b64)
-    d = Base64.decode(decodeURIComponent(escape(b64)));
-    d = d.replaceAll('\0', '')
-    console.log(d)
-    vartable = JSON.parse(d);
+      e.preventDefault();
+      url = $(this).find('a')[0].href;
+      b64 = getJsonFromUrl(url).d;
+      console.log(b64)
+      d = Base64.decode(decodeURIComponent(escape(b64)));
+      d = d.replaceAll('\0', '')
+      console.log(d)
+      vartable = JSON.parse(d);
+      reset_bodybox();
+      run_machine();
   })
 }
 
@@ -134,8 +143,6 @@ function update_cards(){
     }
   }
 }
-
-
 
 function run_machine() {
   update_cards();
