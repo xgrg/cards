@@ -113,7 +113,7 @@ function initChoice(choices){
 }
 
 function displayImage(img){
-  html = "<img src=\"./images/"+img+".jpg\">"
+  html = "<img src=\"./images/"+img+"\">"
 
   $("#imagebox").html(html);
   adjustimg();
