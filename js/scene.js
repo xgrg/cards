@@ -126,6 +126,14 @@ function displayImage(img){
 }
 
 function loadScene(scene){
+  console.log(scene['audio']);
+  if (scene['audio'] != undefined && audio != scene['audio']){
+    // load audio
+    audio = scene['audio'];
+    fn = 'audio/' + scene['audio'] + '.mp3';
+    $('audio').attr('src', fn);
+    $('audio').trigger('play');
+  }
   scene['storylet'](function(){
     addDialog("&nbsp");
     if (scene['choices'] !== undefined){
