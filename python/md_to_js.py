@@ -1,13 +1,13 @@
 #! /usr/bin/env python
 import logging as log
 
-def markdown_to_js(md_fp, js_fp):
+def markdown_to_js(md_fp, js_fp, beautify=False):
     import cards, json
 
     log.info('Markdown file: %s'%md_fp)
     log.info('JS file: %s'%js_fp)
 
-    preamble, body = cards.markdown_to_json(md_fp, rebuild_md=False)
+    preamble, body = cards.markdown_to_json(md_fp, rebuild_md=beautify)
 
     ## save to JSON if necessary
     #json_fp = md_fp.replace('.md','.json')
@@ -31,6 +31,9 @@ def __parse_args__(args=None):
     parser.add_argument('md', help='Markdown file')
     parser.add_argument('js', nargs='?', help='JS file')
     parser.add_argument('--verbose', action='store_true', help='verbosity')
+    parser.add_argument('--beautify', action='store_true',
+        help='beautify Markdown')
+
     args = parser.parse_args(args)
     if args.verbose:
         log.basicConfig(format="%(levelname)s: %(message)s", level=log.INFO)
@@ -44,4 +47,4 @@ if __name__ == '__main__':
 
     js_fp = args.js if not args.js is None else md_fp.replace('.md','.js')
 
-    markdown_to_js(md_fp, js_fp)
+    markdown_to_js(md_fp, js_fp, args.beautify)

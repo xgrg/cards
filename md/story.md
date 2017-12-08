@@ -136,7 +136,7 @@ Je suis à présent dans la pièce à vivre. On y distingue le coin cuisine, un 
 ## Choices
 ### Explorer d'autres pièces
 exam_autrespieces:true
-@action:ExplorerAutresPièces
+@action:ExplorerAutresPieces
 ### S'approcher du coin cuisine
 exam_cuisine:true
 @action:ApprocherCuisine
@@ -206,7 +206,7 @@ Bureau
 *****
 # ApprocherAutresPièces
 ## Conditions
-@action:ExplorerAutresPièces
+@action:ExplorerAutresPieces
 ## Text
 
 Autres Pièces.

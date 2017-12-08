@@ -118,8 +118,8 @@ def regenerate_md(preamble, body):
                 if not if_bit is None:
                     qual_f =  qual_f + '\n@if\n\n'\
                         + beautify_table(if_bit[1]) + '\n'
-                    v1.pop(if_bit[0])
-                if v1 != {}:
+                    v1.pop(if_bit[0])                
+                if v1 != []:
                     md = md + beautify_table(v1) + '\n'
                 md = md + qual_f
 
