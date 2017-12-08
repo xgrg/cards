@@ -1,12 +1,11 @@
 Test = {
   name: 'Test',
   conditions:function(){
-    
-return (true);
-
+    return (true);
   },
   storylet:function(choice){
-  playSequence([    [function(){addDialog("<p>bonjour</p>", "fadeIn")}, 1000],
+  playSequence([
+    [function(){addDialog("<p>bonjour</p>", "fadeIn")}, 1000],
     [choice, 0]])
   },
 
