@@ -23,8 +23,27 @@ Test2 = {
   },
   storylet:function(choice){
   playSequence([
-[function(){displayImage("bois")}, 1000],
+[function(){displayImage("bois.jpg")}, 1000],
     [function(){addDialog("<p>bonjour</p>", "fadeIn")}, 1000],
+    [choice, 0]])
+  },
+  choices:[
+   ["Suite", 
+      function(t){
+       t["@action"] = "Scene1";
+      }],
+]
+}
+
+Test3 = {
+  name: 'Test3',
+  conditions:function(){
+    function a1(){ return (vartable["@action"]=="begin"); };return (a1());
+  },
+  storylet:function(choice){
+  playSequence([
+[function(){displayImage("bois.jpg")}, 1000],
+    [function(){addDialog("<p>bonjour bis</p>", "fadeIn")}, 1000],
     [choice, 0]])
   },
   choices:[
@@ -299,10 +318,11 @@ ApprocherAutresPièces = {
 ]
 }
 
-preload_list = ["images/bois.jpg", "audio/bg.mp3"]
+preload_list = ["images/bois.jpg.jpg", "audio/bg.mp3", "images/bois.jpg.jpg"]
 
 storylets.push(Test);
 storylets.push(Test2);
+storylets.push(Test3);
 storylets.push(Scene1);
 storylets.push(Scene2);
 storylets.push(SceneLookAround);
