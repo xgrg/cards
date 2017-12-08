@@ -167,3 +167,14 @@ def get_preamble(text):
     log.info(preamble)
 
     return preamble, body
+
+def gen_preload_code(j):
+    res = []
+    for sc_name, sc in j.items():
+        if 'image' in sc.keys():
+            res.append('images/%s.jpg'%sc['image'])
+        if 'audio' in sc.keys():
+            res.append('audio/%s.mp3'%sc['audio'])
+
+    code = 'preload_list = [%s]'%', '.join(['"%s"'%e for e in res])
+    return code

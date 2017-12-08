@@ -204,5 +204,9 @@ def json_to_javascript(j, preamble={}):
     for sc_name, _ in j.items():
         pushlist = pushlist + 'storylets.push(%s);\n'%sc_name
 
+    # Adds a list with all iamges/audio resources (preload)
+    preload_list = gen_preload_code(j)
+    js = js + preload_list + '\n\n'
+
     js = js + pushlist
     return js
