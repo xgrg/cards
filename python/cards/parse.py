@@ -118,13 +118,13 @@ def regenerate_md(preamble, body):
                 if not if_bit is None:
                     qual_f =  qual_f + '\n@if\n\n'\
                         + beautify_table(if_bit[1]) + '\n'
-                    v1.pop(if_bit[0])                
+                    v1.pop(if_bit[0])
                 if v1 != []:
                     md = md + beautify_table(v1) + '\n'
                 md = md + qual_f
 
         # adds a breaking line
-        md = md + '\n#####\n'
+        md = md + '\n******\n\n'
 
     return md
 
@@ -150,8 +150,8 @@ def markdown_to_json(md_fp, rebuild_md=False):
     md = regenerate_md(preamble, j)
 
     if rebuild_md:
-        log.info('* Rebuild MD')
         md_fp2 = md_fp.replace('.md','.beautified.md')
+        log.info('* Rebuild MD and writing %s'%md_fp2)
         with open(md_fp2, 'w') as w:
             w.write(md)
 

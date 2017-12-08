@@ -68,7 +68,6 @@ def gen_choice_effect_code(conditions):
 
     f = []
     fdict = {'eq': '='}
-    print(conditions)
     for var, func, val in conditions:
         f.append('t["%s"] %s "%s";'%(var, fdict[func], val))
     if len(f) == 0: return 'function(t){}';
@@ -84,7 +83,6 @@ def gen_choice(code):
         # label is the text of the choice, option is the assigned code
         if_func = ''
         if_bit = find_if(option)
-        print (option)
         if not if_bit is None:
             if_func = ', ' + 'function(){%s} '%gen_conditions_code(if_bit[1])
             option.pop(if_bit[0])
