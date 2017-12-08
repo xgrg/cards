@@ -11,7 +11,7 @@ function preload(){
     console.log( arrayOfImages[i]);
     image.setAttribute('src', arrayOfImages[i]);
   });
-  var arrayOfImages = []
+  var arrayOfImages = ['audio/bg.mp3']
   $(arrayOfImages).each(function(i){   // Note the argument
     console.log( arrayOfImages[i]);
     var image = document.createElement('source');
