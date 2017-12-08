@@ -47,3 +47,15 @@ a, a:link, a:visited {
 .gobtn{
   text-align: right
 }
+#choicebox{
+  margin-bottom:20px;
+}
+#availbox span{
+  border: 1px solid white;
+  margin:5px;
+  padding:5px;
+}
+
+#availbox {
+  display:inline;
+}

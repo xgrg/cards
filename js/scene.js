@@ -58,7 +58,6 @@ function addLink(text, choice_effect_function, id){
       d = d.replaceAll('\0', '')
       console.log(d)
       vartable = JSON.parse(d);
-      reset_bodybox();
       run_machine();
   })
 }
@@ -122,7 +121,8 @@ function displayImage(img){
 }
 
 function loadScene(scene){
-  console.log(scene['audio']);
+  console.log(scene);
+  reset_scenebox();
   if (scene['audio'] != undefined && audio != scene['audio']){
     // load audio
     audio = scene['audio'];
@@ -140,7 +140,10 @@ function loadScene(scene){
 }
 
 function update_cards(){
+  // Available cards are re-evaluated at every turn
+  cards_to_play = [];
 
+  // Conditions of every card are assessed
   for (var i=0;i<storylets.length;i++){
     if (storylets[i]['conditions']() == true){
           console.log(storylets[i]['name'] + ' is played')
@@ -149,14 +152,33 @@ function update_cards(){
   }
 }
 
+function update_availbox(cards_to_play){
+   html = ''
+   if (cards_to_play.length == 1) {
+     $('#availbox').html(html);
+     return
+   }
+   for (var i = 0 ; i < cards_to_play.length ; i++){
+      card = storylets[cards_to_play[i]]
+      html = html + '<span cardIndex='+ cards_to_play[i]+
+        '>' + card.name + '</span>'
+   }
+   $('#availbox').html(html);
+   $('#availbox span').click(function(){
+       cardIndex = $(this).attr('cardIndex')
+       console.log(cardIndex);
+       card = storylets[cardIndex]
+       loadScene(card)
+   })
+}
+
 function run_machine() {
   update_cards();
-
+  update_availbox(cards_to_play)
   delete vartable['@action']
   console.log(cards_to_play)
   if (cards_to_play.length != 0){
-    random = Math.floor((Math.random() * cards_to_play.length));
-    console.log(random)
+    random = 0;// Math.floor((Math.random() * cards_to_play.length));
     card = storylets[cards_to_play[random]];
     loadScene(card)
     cards_to_play.splice(random, 1);

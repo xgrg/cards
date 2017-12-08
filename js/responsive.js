@@ -5,11 +5,18 @@ function adjustimg(){
 }
 
 
-function reset_bodybox(){
+function reset_scenebox(){
+   $('#imagebox').html('');
+   $('#dialogbox').html('');
+   $('#choicebox').html('');
+}
+
+function set_bodybox(){
    html ='<div id="imagebox"></div>'+
          '<div id="textbox">'+
          '<div id="dialogbox"></div>'+
          '<div id="choicebox"></div>'+
+         '<div id="availbox"></div>'+
          '</div>'
    $('#bodybox').html(html)
    config_bodybox();
@@ -34,7 +41,7 @@ function preload(callback){
         $('#bodybox').html(html);
     });
     console.log('preload done')
-    reset_bodybox();
+    set_bodybox();
     callback();
 }
 

@@ -11,7 +11,7 @@ lang:fr
 ## Action
 begin
 ## Image
-bois
+bois.jpg
 ## Text
 bonjour
 ## Audio
@@ -19,8 +19,18 @@ bg
 ## Choices
 ### Suite
 @action:Scene1
-
-
+**************
+# Test3
+## Action
+begin
+## Image
+bois.jpg
+## Text
+bonjour bis
+## Choices
+### Suite
+@action:Scene1
+***************************
 # Scene1
 ## Conditions
 @action:Scene1
