@@ -3,7 +3,7 @@ Test2 = {
   audio:"music_bg",
   conditions:function(){
     
-function a1(){ return (vartable["lang"]=="fr"); };return (a1());
+function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["@action"]=="toto"); };return (a1() && a2());
 
   },
   storylet:function(choice){

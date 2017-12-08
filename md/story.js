@@ -3,7 +3,7 @@ Test = {
   audio:"bg",
   conditions:function(){
     
-return (true);
+function a1(){ return (vartable["@action"]=="start"); };return (a1());
 
   },
   storylet:function(choice){
@@ -11,7 +11,7 @@ return (true);
     [function(){addDialog("<p>bonjour</p>", "fadeIn")}, 1000],
     [choice, 0]])
   },
-
+choices:[["Continuer", {"lang": "fr"}],]
 }
 
 $(document).ready(function(){

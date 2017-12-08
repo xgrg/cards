@@ -56,7 +56,6 @@ function addLink(text, vars, id){
     d = d.replaceAll('\0', '')
     console.log(d)
     vartable = JSON.parse(d);
-    //return false;
   })
 }
 
@@ -120,8 +119,6 @@ function displayImage(img){
 function loadScene(scene){
   scene['storylet'](function(){
     addDialog("&nbsp");
-    console.log($("#choice1"));
-    // add three choices
     if (scene['choices'] !== undefined){
       initChoice(scene['choices']);
     }
@@ -129,18 +126,14 @@ function loadScene(scene){
 }
 
 function update_cards(){
-  console.log('@action', vartable['@action'])
 
   for (var i=0;i<storylets.length;i++){
-
     if (storylets[i]['conditions']() == true){
           console.log(storylets[i]['name'] + ' is played')
           cards_to_play.push(i);
     }
   }
-  console.log('vartable', vartable)
 }
-
 
 
 
@@ -178,5 +171,4 @@ $( document ).ready(function() {
   scenefile = f;
 
   loadScript('md/'+f+'.js', run_machine)
-
 });
