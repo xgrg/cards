@@ -13,28 +13,24 @@ def markdown_table_to_dict(code):
     df = pd.read_html(html, converters={'value': str})[0]
     booleanDictionary = {True: 'true', False: 'false'}
     df = df.replace(booleanDictionary)
-    rec = [(e[1], e[2]) for e in df.to_records()]
-    return dict(rec)
+    rec = [(e[1], e[2], e[3]) for e in df.to_records()]
+    return rec
 
-def get_dict(code):
-    ''' From simple text to dict.
-    ex: sc:0
-        lang:fr
-        @function etc
+def get_dict(text):
+    ''' From simple text to list of lists.
+    ex: sc:gte:0
+        lang:eq:fr
     '''
     res = []
-    for each in code.split('\n'):
-        if each == '': continue #ignore blank lines
-        if '@action' in each:
-            k, v = each.split(':')
-            res.append((k,''.join(v.split('\n'))))
-        elif '@' not in each: #ignore lines starting with @
+    for each in text.split('\n'):
+            if each == '': continue #ignore blank lines
             each = clean_line(each)
-            k, v = each.split(':')
-            res.append((k,v))
-        else:
-            break
-    return dict(res)
+            bits = each.split(':')
+            if len(bits) == 2:
+                res.append((bits[0], 'eq', bits[1]))
+            else:
+                res.append(bits)
+    return res
 
 def parse_dict(code):
     ''' From Markdown code to a dictionary (used for Qualities/Choices).
@@ -46,12 +42,11 @@ def parse_dict(code):
                len(set(each).intersection(set('-|:'))) > 2:
                     is_md = is_md + 1
         return is_md == 2
-
     #log.info('is_markdown:%s'%is_markdown(code))
     if is_markdown(code):
         d = markdown_table_to_dict(code)
         return d
     else:
-        if clean_line(code) == '': return {}
+        if clean_line(code) == '': return []
         d = get_dict(code)
         return d

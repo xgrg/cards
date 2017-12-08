@@ -35,15 +35,16 @@ function getJsonFromUrl(url) {
   return result;
 }
 
-
-function addLink(text, vars, id){
+function addLink(text, choice_effect_function, id){
   var newtable = copyMap(vartable);
-  for (var i in vars)
-    newtable[i] = vars[i];
+  choice_effect_function(newtable);
+  console.log('new')
   console.log(newtable)
 
   b64 = unescape(encodeURIComponent(Base64.encode(JSON.stringify(newtable))))
-  line = "<div><span>"+text+"</span></div> <br><div class=\"gobtn\"><a href=\"?f="+scenefile+"&d="+b64+"\">Go.</a></div>";
+  line = "<div><span>" + text +
+      "</span></div> <br><div class=\"gobtn\"><a href=\"?f="
+      + scenefile + "&d=" + b64 + "\">Go.</a></div>";
 
   $("div#choice"+id).html(line);
   $("div#choice"+id).addClass("choice")
@@ -86,6 +87,7 @@ function displayChoice(choices, i, interval){
   if (interval ===undefined){
     interval = 300;
   }
+  console.log(choices[i][1])
   addLink(choices[i][0], choices[i][1], i+1);
   if (i<choices.length-1){
     window.setTimeout(

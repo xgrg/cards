@@ -24,9 +24,9 @@ def clean_json(j):
 
         # Starts with Qualities: looks for either one table or a function or both
         if 'Conditions' in v.keys():
-            sc['conditions'] = dict(parse_dict(v['Conditions']))
+            sc['conditions'] = parse_dict(v['Conditions'])
         if 'Action' in v.keys():
-            sc.setdefault('conditions', {})['@action'] = v['Action']
+            sc.setdefault('conditions', []).append(('@action', 'eq', v['Action']))
 
         # Image and Text do not need to be touched at this stage
         for each in ['Image', 'Text', 'Code', 'Audio']:
@@ -39,9 +39,10 @@ def clean_json(j):
             ch = OrderedDict()
             for k1, v1 in v['Choices'].items():
                 choice_parts = split_choice(v1)
-                choice_dict = dict(parse_dict(choice_parts[0]))
+                choice_dict = parse_dict(choice_parts[0])
                 if len(choice_parts) > 1:
-                    choice_dict['@if'] = dict(parse_dict(choice_parts[1]))
+                    choice_dict.append(('@if', parse_dict(choice_parts[1])))
+
                 ch[k1] = choice_dict
             sc['choices'] = ch
         res[k] = sc
@@ -82,7 +83,7 @@ def regenerate_md(preamble, body):
     def beautify_table(d):
         ''' From a dictionary to a Markdown table'''
         import tabulate
-        res = tabulate.tabulate(d.items(), ['variable', 'value'], tablefmt="pipe")
+        res = tabulate.tabulate(d, ['variable', 'function', 'value'], tablefmt="pipe")
         return res
 
     # first copy preamble
@@ -113,10 +114,11 @@ def regenerate_md(preamble, body):
             for k1, v1 in v['choices'].items():
                 md = md + '### %s\n'%k1
                 qual_f = ''
-                if '@if' in v1.keys():
+                if_bit = find_if(v1)
+                if not if_bit is None:
                     qual_f =  qual_f + '\n@if\n\n'\
-                        + beautify_table(v1['@if']) + '\n'
-                    v1.pop('@if')
+                        + beautify_table(if_bit[1]) + '\n'
+                    v1.pop(if_bit[0])
                 if v1 != {}:
                     md = md + beautify_table(v1) + '\n'
                 md = md + qual_f
@@ -165,9 +167,9 @@ def json_to_javascript(j, preamble={}):
     for sc_name, sc in j.items():
 
         # Start with conditions (adds conditions from preamble if any)
-        conditions = sc['conditions'].items() \
+        conditions = sc['conditions'] \
             if 'conditions' in sc.keys() else []
-        preamble_cond = preamble['conditions'].items() \
+        preamble_cond = preamble['conditions'] \
             if 'conditions' in preamble.keys() else []
 
         log.info('%s - %s conditions'%(sc_name, len(conditions)))
@@ -194,7 +196,7 @@ def json_to_javascript(j, preamble={}):
         # Compiles everything
         sc_code = '  name: \'%s\',\n%s'\
             '  conditions:function(){\n    %s\n  },\n'\
-            '  storylet:function(choice){\n%s\n  },\n%s'\
+            '  storylet:function(choice){\n  %s\n  },\n%s'\
             %(sc_name, audio, qual_code, storylet_code%(image, extra_code), choices_code)
         scene_js = '%s = {\n%s\n}'%(sc_name, sc_code)
         js = js + scene_js + '\n\n'

@@ -36,6 +36,13 @@ def split_choice(text):
         res.append(clean_line(split[1].split('@if')[1]))
     return res
 
+def find_if(v):
+    for i, e in enumerate(v):
+        if e[0] == '@if':
+            return i, e[1]
+    return None
+
+
 
 def gen_conditions_code(conditions):
     ''' From a JSON dict generates JS code for Conditions.
@@ -43,15 +50,31 @@ def gen_conditions_code(conditions):
      preamble.'''
     f = []
     res = ''
-    for k, v in conditions:
-        f.append('a%s'%(len(f)+1))
-        res =  res + 'function %s(){ return (vartable["%s"]=="%s"); };'%(f[-1], k, v)
 
-    res = '\n%s'%res
+    fdict = {'eq': '=='}
+
+    for var, func, val in conditions:
+        f.append('a%s'%(len(f)+1))
+        res =  res + 'function %s(){ return (vartable["%s"]%s"%s"); };'\
+            %(f[-1], var, fdict[func], val)
+
+    #res = '\n%s'%res
     c = ' && '.join(['%s()'%e for e in f]) if len(f) != 0 else 'true'
-    res = res + 'return (%s);\n'%c
+    res = res + 'return (%s);'%c
 
     return res
+
+def gen_choice_effect_code(conditions):
+
+    f = []
+    fdict = {'eq': '='}
+    print(conditions)
+    for var, func, val in conditions:
+        f.append('t["%s"] %s "%s";'%(var, fdict[func], val))
+    if len(f) == 0: return 'function(t){}';
+    res = 'function(t){\n       %s\n      }'%'\n       '.join(f)
+    return res
+
 
 def gen_choice(code):
     ''' From a JSON dict generates JS code for Choices'''
@@ -60,13 +83,16 @@ def gen_choice(code):
     for label, option in code.items():
         # label is the text of the choice, option is the assigned code
         if_func = ''
-        if '@if' in option.keys():
-            if_func = ', ' + 'function(){%s}'%gen_conditions_code(option['@if'].items())
-            option.pop('@if')
+        if_bit = find_if(option)
+        print (option)
+        if not if_bit is None:
+            if_func = ', ' + 'function(){%s} '%gen_conditions_code(if_bit[1])
+            option.pop(if_bit[0])
 
-        res = res + '["%s", %s%s],'%(label, json.dumps(option), if_func)
+        res = res + '   ["%s", \n      %s%s],\n'\
+            %(label, gen_choice_effect_code(option), if_func)
 
-    return 'choices:[%s]'%res
+    return '  choices:[\n%s]'%res
 
 
 def gen_storylet_code(code):
@@ -82,7 +108,7 @@ def gen_storylet_code(code):
             seq = seq + '    [function()%s],\n'%(eachcode)
         return seq
 
-    storylet_code = '  playSequence([%s%s%s    [choice, 0]])'\
+    storylet_code = 'playSequence([\n%s%s%s    [choice, 0]])'\
         %("%s", gen_playsequence(code), "%s")
     return storylet_code
 
@@ -119,7 +145,7 @@ def get_preamble(text):
     Note: actually runs on the .md1 file so that these optional lines get removed
     as are breaking lines.'''
 
-    preamble_keys = ['conditions'] #'version': None, 'qualities':None, 'extensions':None}
+    preamble_keys = ['version', 'conditions', 'extensions']
     preamble = {}
 
     log.info('* Fetching preamble.')
@@ -151,7 +177,7 @@ def get_preamble(text):
         if each == '': continue
         each = clean_line(each).lower()
         k, v = each[:each.find(':')], each[each.find(':')+1:]
-        if k == 'qualities':
+        if k == 'conditions':
             v = v.strip('\n').rstrip('\n')
             d = parse_dict(v)
             preamble[k] = d
