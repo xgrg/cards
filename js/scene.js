@@ -132,6 +132,7 @@ function loadScene(scene){
     audio = scene['audio'];
     fn = 'audio/' + scene['audio'] + '.mp3';
     $('audio').attr('src', fn);
+    console.log($('audio')[0]);
     $('audio').trigger('play');
   }
   scene['storylet'](function(){
