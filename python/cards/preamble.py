@@ -51,7 +51,8 @@ def gen_conditions_code(conditions):
     f = []
     res = ''
 
-    fdict = {'eq': '=='}
+    fdict = {'eq': '==',
+             'neq' : '!='}
 
     for var, func, val in conditions:
         f.append('a%s'%(len(f)+1))
