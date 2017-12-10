@@ -60,6 +60,7 @@ sc:eq:1
 # FrScene2
 ## Conditions
 sc:eq:1
+lang:eq:fr
 
 ## Image
 vallter2.jpg
@@ -86,6 +87,7 @@ sc:eq:scene_croise_marcheurs
 # FrScene_croise_marcheurs
 ## Conditions
 sc:eq:scene_croise_marcheurs
+lang:eq:fr
 
 
 ## Text

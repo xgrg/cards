@@ -74,9 +74,10 @@ Le temps d’enfiler quelques couches supplémentaires, d’une dernière vérif
 
 # FrScene2
 ## Conditions
-| variable   | function   |   value |
-|:-----------|:-----------|--------:|
-| sc         | eq         |       1 |
+| variable   | function   | value   |
+|:-----------|:-----------|:--------|
+| sc         | eq         | 1       |
+| lang       | eq         | fr      |
 
 ## Image
 vallter2.jpg
@@ -111,6 +112,7 @@ La montée s’effectue sans encombres.
 | variable   | function   | value                  |
 |:-----------|:-----------|:-----------------------|
 | sc         | eq         | scene_croise_marcheurs |
+| lang       | eq         | fr                     |
 
 ## Text
 Je salue quelques marcheurs en les croisant dans leur descente.. C’est en effet davantage une heure de fin de parcours que de début...  
