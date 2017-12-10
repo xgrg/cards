@@ -78,7 +78,7 @@ FrScene1 = {
 FrScene2 = {
   name: 'FrScene2',
   conditions:function(){
-    function a1(){ return (vartable["sc"]=="1"); };return (a1());
+    function a1(){ return (vartable["sc"]=="1"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -107,7 +107,7 @@ FrScene2 = {
 FrScene_croise_marcheurs = {
   name: 'FrScene_croise_marcheurs',
   conditions:function(){
-    function a1(){ return (vartable["sc"]=="scene_croise_marcheurs"); };return (a1());
+    function a1(){ return (vartable["sc"]=="scene_croise_marcheurs"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
