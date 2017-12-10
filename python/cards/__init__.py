@@ -1,1 +1,1 @@
-from parse import *
+from parse import markdown_to_json
