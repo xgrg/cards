@@ -42,76 +42,6 @@ def find_if(v):
             return i, e[1]
     return None
 
-
-
-def gen_conditions_code(conditions):
-    ''' From a JSON dict generates JS code for Conditions.
-    `conditions` is a list of 2-uples built from dictionary/@function and
-     preamble.'''
-    f = []
-    res = ''
-
-    fdict = {'eq': '==',
-             'neq' : '!='}
-
-    for var, func, val in conditions:
-        f.append('a%s'%(len(f)+1))
-        res =  res + 'function %s(){ return (vartable["%s"]%s"%s"); };'\
-            %(f[-1], var, fdict[func], val)
-
-    #res = '\n%s'%res
-    c = ' && '.join(['%s()'%e for e in f]) if len(f) != 0 else 'true'
-    res = res + 'return (%s);'%c
-
-    return res
-
-def gen_choice_effect_code(conditions):
-
-    f = []
-    fdict = {'eq': '='}
-    for var, func, val in conditions:
-        f.append('t["%s"] %s "%s";'%(var, fdict[func], val))
-    if len(f) == 0: return 'function(t){}';
-    res = 'function(t){\n       %s\n      }'%'\n       '.join(f)
-    return res
-
-
-def gen_choice(code):
-    ''' From a JSON dict generates JS code for Choices'''
-    import json
-    res = ''
-    for label, option in code.items():
-        # label is the text of the choice, option is the assigned code
-        if_func = ''
-        if_bit = find_if(option)
-        if not if_bit is None:
-            if_func = ', ' + 'function(){%s} '%gen_conditions_code(if_bit[1])
-            option.pop(if_bit[0])
-
-        res = res + '   ["%s", \n      %s%s],\n'\
-            %(label, gen_choice_effect_code(option), if_func)
-
-    return '  choices:[\n%s]'%res
-
-
-def gen_storylet_code(code):
-    ''' Turns the Text section in a JS playable sequence.
-    By default, every bit appears with a 'fadeIn' effect in 1000 ms.'''
-
-    def gen_playsequence(code):
-        import markdown
-        seq = ''
-        for each in code.split('\n'):
-            each = markdown.markdown(each)
-            eachcode = '{addDialog("%s", "fadeIn")}, 1000'%each
-            seq = seq + '    [function()%s],\n'%(eachcode)
-        return seq
-
-    storylet_code = 'playSequence([\n%s%s%s    [choice, 0]])'\
-        %("%s", gen_playsequence(code), "%s")
-    return storylet_code
-
-
 def remove_minuslines(text):
     ''' Creates a new file with same content minus lines full of ------'''
     log.info('* Removing minus lines.')
@@ -192,14 +122,3 @@ def get_preamble(text):
     log.info(preamble)
 
     return preamble, body
-
-def gen_preload_code(j):
-    res = []
-    for sc_name, sc in j.items():
-        if 'image' in sc.keys():
-            res.append('images/%s.jpg'%sc['image'])
-        if 'audio' in sc.keys():
-            res.append('audio/%s.mp3'%sc['audio'])
-
-    code = 'preload_list = [%s]'%', '.join(['"%s"'%e for e in res])
-    return code
