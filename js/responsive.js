@@ -9,6 +9,8 @@ function reset_scenebox(){
    $('#imagebox').html('');
    $('#dialogbox').html('');
    $('#choicebox').html('');
+   if (fullscreen == 1)
+    screenfull.request($('#bodybox')[0]);
 }
 
 function set_bodybox(){
@@ -21,8 +23,8 @@ function set_bodybox(){
    $('#bodybox').html(html)
    config_bodybox();
 
-   if (fullscreen == 1)
-    screenfull.request($('#bodybox')[0]);
+
+
    console.log("reset bodybox")
 }
 
