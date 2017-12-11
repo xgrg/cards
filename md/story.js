@@ -44,7 +44,7 @@ SceneChoixLangues = {
 FrScene1 = {
   name: 'FrScene1',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="0"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="0"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -111,7 +111,7 @@ FrScene_croise_marcheurs = {
   },
   storylet:function(choice){
   playSequence([
-    [function(){addDialog("<p>Je salue quelques marcheurs en les croisant dans leur descente.. C’est en effet davantage une heure de fin de parcours que de début...  </p>", "fadeIn")}, 1000],
+    [function(){addDialog("<p>Je salue quelques marcheurs en les croisant dans leur descente.. C’est en effet davantage une heure de fin de parcours que de début...</p>", "fadeIn")}, 1000],
     [function(){addDialog("", "fadeIn")}, 1000],
     [function(){addDialog("<p>L’un d’entre eux, vêtu d’un combinaison de secouriste rouge, s’adresse à moi :</p>", "fadeIn")}, 1000],
     [function(){addDialog("", "fadeIn")}, 1000],
@@ -137,7 +137,7 @@ FrScene_croise_marcheurs = {
 FrScene_mensonge = {
   name: 'FrScene_mensonge',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="mensonge"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="mensonge"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -157,7 +157,7 @@ FrScene_mensonge = {
 FrScene_nepasrepondre = {
   name: 'FrScene_nepasrepondre',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="nepasrepondre"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="nepasrepondre"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -175,7 +175,7 @@ FrScene_nepasrepondre = {
 FrScene_verite = {
   name: 'FrScene_verite',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="verite"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="verite"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -195,7 +195,7 @@ FrScene_verite = {
 FrScene3 = {
   name: 'FrScene3',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="2"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="2"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -222,7 +222,7 @@ FrScene3 = {
 FrScene3b = {
   name: 'FrScene3b',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="back-to-vallter"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="back-to-vallter"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -490,7 +490,7 @@ FrScene13 = {
 FrScene14nourrit = {
   name: 'FrScene14nourrit',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="13"); };function a3(){ return (vartable["sac"]=="nourriture"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="13"); };function a2(){ return (vartable["sac"]=="nourriture"); };function a3(){ return (vartable["lang"]=="fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -508,7 +508,7 @@ FrScene14nourrit = {
 FrScene14clou = {
   name: 'FrScene14clou',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="14"); };function a3(){ return (vartable["sac"]=="clou"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="14"); };function a2(){ return (vartable["sac"]=="clou"); };function a3(){ return (vartable["lang"]=="fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -533,7 +533,7 @@ FrScene14clou = {
 FrScene14banc = {
   name: 'FrScene14banc',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="13"); };function a3(){ return (vartable["sac"]=="banc"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="13"); };function a2(){ return (vartable["sac"]=="banc"); };function a3(){ return (vartable["lang"]=="fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -559,7 +559,7 @@ FrScene14banc = {
 FrScene15 = {
   name: 'FrScene15',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="14"); };function a3(){ return (vartable["sac"]!="banc"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="14"); };function a2(){ return (vartable["sac"]!="banc"); };function a3(){ return (vartable["lang"]=="fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -582,7 +582,7 @@ FrScene15 = {
 FrScene16 = {
   name: 'FrScene16',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="15"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="15"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -643,7 +643,7 @@ FrScene18 = {
 FrScene19 = {
   name: 'FrScene19',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="fr"); };function a2(){ return (vartable["sc"]=="18"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="18"); };function a2(){ return (vartable["lang"]=="fr"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -662,7 +662,7 @@ FrScene19 = {
 CaScene1 = {
   name: 'CaScene1',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="0"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="0"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -696,7 +696,7 @@ CaScene1 = {
 CaScene2 = {
   name: 'CaScene2',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="1"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="1"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -725,7 +725,7 @@ CaScene2 = {
 CaScene_croise_marcheurs = {
   name: 'CaScene_croise_marcheurs',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="scene_croise_marcheurs"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="scene_croise_marcheurs"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -755,7 +755,7 @@ CaScene_croise_marcheurs = {
 CaScene_mensonge = {
   name: 'CaScene_mensonge',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="mensonge"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="mensonge"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -775,7 +775,7 @@ CaScene_mensonge = {
 CaScene_nepasrepondre = {
   name: 'CaScene_nepasrepondre',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="nepasrepondre"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="nepasrepondre"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -793,7 +793,7 @@ CaScene_nepasrepondre = {
 CaScene_verite = {
   name: 'CaScene_verite',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="verite"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="verite"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -813,7 +813,7 @@ CaScene_verite = {
 CaScene3 = {
   name: 'CaScene3',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="2"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="2"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -840,7 +840,7 @@ CaScene3 = {
 CaScene3b = {
   name: 'CaScene3b',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="back-to-vallter"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="back-to-vallter"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -862,7 +862,7 @@ CaScene3b = {
 CaScene4 = {
   name: 'CaScene4',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="3"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="3"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -885,7 +885,7 @@ CaScene4 = {
 CaScene5 = {
   name: 'CaScene5',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="4"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="4"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -906,7 +906,7 @@ CaScene5 = {
 CaScene6 = {
   name: 'CaScene6',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="5"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="5"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -929,7 +929,7 @@ CaScene6 = {
 CaScene7 = {
   name: 'CaScene7',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="6"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="6"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -963,7 +963,7 @@ CaScene7 = {
 CaScene8 = {
   name: 'CaScene8',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="7"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="7"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -982,7 +982,7 @@ CaScene8 = {
 CaScene9 = {
   name: 'CaScene9',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="8"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="8"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1009,7 +1009,7 @@ CaScene9 = {
 CaScene10 = {
   name: 'CaScene10',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="9"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="9"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1032,7 +1032,7 @@ CaScene10 = {
 CaScene11 = {
   name: 'CaScene11',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="10"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="10"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1054,7 +1054,7 @@ CaScene11 = {
 CaScene12 = {
   name: 'CaScene12',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="11"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="11"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1076,7 +1076,7 @@ CaScene12 = {
 CaScene13 = {
   name: 'CaScene13',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="12"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="12"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1108,7 +1108,7 @@ CaScene13 = {
 CaScene14nourrit = {
   name: 'CaScene14nourrit',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="13"); };function a3(){ return (vartable["sac"]=="nourriture"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="13"); };function a2(){ return (vartable["sac"]=="nourriture"); };function a3(){ return (vartable["lang"]=="ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -1126,7 +1126,7 @@ CaScene14nourrit = {
 CaScene14clou = {
   name: 'CaScene14clou',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="13"); };function a3(){ return (vartable["sac"]=="clou"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="13"); };function a2(){ return (vartable["sac"]=="clou"); };function a3(){ return (vartable["lang"]=="ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -1151,7 +1151,7 @@ CaScene14clou = {
 CaScene14banc = {
   name: 'CaScene14banc',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="13"); };function a3(){ return (vartable["sac"]=="banc"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="13"); };function a2(){ return (vartable["sac"]=="banc"); };function a3(){ return (vartable["lang"]=="ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -1177,7 +1177,7 @@ CaScene14banc = {
 CaScene15 = {
   name: 'CaScene15',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="14"); };function a3(){ return (vartable["sac"]!="banc"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]=="14"); };function a2(){ return (vartable["sac"]!="banc"); };function a3(){ return (vartable["lang"]=="ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice){
   playSequence([
@@ -1200,7 +1200,7 @@ CaScene15 = {
 CaScene16 = {
   name: 'CaScene16',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="15"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="15"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1221,7 +1221,7 @@ CaScene16 = {
 CaScene17 = {
   name: 'CaScene17',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="16"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="16"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1240,7 +1240,7 @@ CaScene17 = {
 CaScene18 = {
   name: 'CaScene18',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="17"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="17"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([
@@ -1261,7 +1261,7 @@ CaScene18 = {
 CaScene19 = {
   name: 'CaScene19',
   conditions:function(){
-    function a1(){ return (vartable["lang"]=="ca"); };function a2(){ return (vartable["sc"]=="18"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]=="18"); };function a2(){ return (vartable["lang"]=="ca"); };return (a1() && a2());
   },
   storylet:function(choice){
   playSequence([

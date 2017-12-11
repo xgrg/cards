@@ -1,5 +1,4 @@
 Version:1.1
-Extensions:test.md,test1.md
 # Test
 
 *********
