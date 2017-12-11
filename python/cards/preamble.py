@@ -1,6 +1,6 @@
 from __future__ import print_function
 import logging as log
-
+from table import *
 
 def split_choice(text):
     ''' Some choices can have associated conditions identified by @if.
@@ -50,6 +50,8 @@ def remove_minuslines(text):
     for each in text.split('\n'):
         is_line = False
         clean = clean_line(each)
+        if each.startswith('>'):
+            each = each.lstrip('>').lstrip(' ')
         if len(set(clean)) == 1:
             for s in ['---', '***', '###']:
                 if clean.startswith(s):

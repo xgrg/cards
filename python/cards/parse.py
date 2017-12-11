@@ -1,6 +1,15 @@
 from preamble import *
 from table import *
 
+def add_preamble_conditions(body, conditions):
+
+    from copy import deepcopy
+    j = deepcopy(body)
+    for k, v in j.items():
+        v.setdefault('conditions', []).extend(conditions)
+    return j
+
+
 def clean_json(j):
     ''' From a JSONified Markdown file, reformats selected bits of the JSON when
     necessary e.g. turning Quality/Choices tables to dictionaries '''
@@ -29,7 +38,7 @@ def clean_json(j):
             sc.setdefault('conditions', []).append(('@action', 'eq', v['Action']))
 
         # Image and Text do not need to be touched at this stage
-        for each in ['Image', 'Text', 'Code', 'Audio']:
+        for each in ['Image', 'Code', 'Text', 'Audio']:
             if each in v.keys():
                 sc[each.lower()] = v[each]
 
@@ -87,9 +96,19 @@ def regenerate_md(preamble, body):
         return res
 
     # first copy preamble
-    log.info(preamble)
+    log.info('* Rebuilding MD...')
+    log.info('Provided preamble : %s'%preamble)
     md = ''
+    if 'version' in preamble.keys():
+        md = md + 'Version: %s\n\n'%preamble['version']
+    if 'conditions' in preamble.keys():
+        md = md + 'Conditions:\n\n'
+        t = beautify_table(preamble['conditions'])
+        md = md + t + '\n\n'
+    if 'extensions' in preamble.keys():
+        md = md + 'Extensions:%s\n\n'%','.join(preamble['extensions'])
 
+    md = md + '*****\n\n'
     # then appends scenes
 
     from copy import deepcopy
@@ -104,9 +123,12 @@ def regenerate_md(preamble, body):
             if d != {}:
                 md = md + beautify_table(d) +'\n\n'
 
-        for each in ['action', 'image', 'text', 'code', 'audio']:
+        for each in ['action', 'image', 'code', 'audio']:
             if each in v.keys():
                 md = md + '## %s\n%s\n'%(each.capitalize(), v[each])
+        if 'text' in v.keys():
+            md = md + '## Text\n%s\n'\
+                %'\n'.join(['> %s'%e for e in v['text'].split('\n')])
 
         # if section is choice check for tables
         if 'choices' in v.keys():
@@ -151,7 +173,7 @@ def markdown_to_json(md_fp, rebuild_md=False):
 
     if rebuild_md:
         md_fp2 = md_fp.replace('.md','.beautified.md')
-        log.info('* Rebuild MD and writing %s'%md_fp2)
+        log.info('* Now rebuilt MD and writing %s'%md_fp2)
         with open(md_fp2, 'w') as w:
             w.write(md)
 

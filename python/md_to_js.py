@@ -3,18 +3,35 @@ import logging as log
 
 def markdown_to_js(md_fp, js_fp, beautify=False):
     import cards, json
+    import os.path as osp
 
     log.info('Markdown file: %s'%md_fp)
     log.info('JS file: %s'%js_fp)
 
     preamble, body = cards.markdown_to_json(md_fp, rebuild_md=beautify)
 
+    # Extending the JSON with possible extensions
+    body = cards.add_preamble_conditions(body, preamble.get('conditions',[]))
+    extensions = preamble.get('extensions',[])
+    log.info('* %s extensions included (%s)'%(len(extensions), extensions))
+    for each in extensions:
+        log.info('* Processing extension %s'%each)
+        fp = osp.join(osp.dirname(md_fp), each)
+        p, b = cards.markdown_to_json(fp, rebuild_md=beautify)
+        b = cards.add_preamble_conditions(b, p.get('conditions', []))
+        for k, v in b.items():
+            if k in body.keys():
+                log.warning('%s is a duplicate key in JSON object'%k)
+            else:
+                body[k] = v
+                
     ## save to JSON if necessary
     #json_fp = md_fp.replace('.md','.json')
     #json.dump(body, open(json_fp, 'w'), indent=2, ensure_ascii=False, encoding ='utf-8')
 
     # Generates JS from Json
-    js = cards.json_to_javascript(body, preamble)
+    js = cards.json_to_javascript(body)
+
     with open(js_fp, 'w') as w:
         w.write(js)
 

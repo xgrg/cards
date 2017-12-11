@@ -79,10 +79,9 @@ def gen_preload_code(j):
     code = 'preload_list = [%s]'%', '.join(['"%s"'%e for e in res])
     return code
 
-
-def json_to_javascript(j, preamble={}):
-    if preamble == {}:
-        log.info('* No preamble provided.')
+def json_to_javascript(j): #, preamble={}):
+    #if preamble == {}:
+    #    log.info('* No preamble provided.')
 
     js = ''
     for sc_name, sc in j.items():
@@ -90,14 +89,14 @@ def json_to_javascript(j, preamble={}):
         # Start with conditions (adds conditions from preamble if any)
         conditions = sc['conditions'] \
             if 'conditions' in sc.keys() else []
-        preamble_cond = preamble['conditions'] \
-            if 'conditions' in preamble.keys() else []
+        #preamble_cond = preamble['conditions'] \
+        #    if 'conditions' in preamble.keys() else []
 
         log.info('%s - %s conditions'%(sc_name, len(conditions)))
-        if len(preamble_cond) != 0:
-            log.info('%s preamble conditions'%len(preamble_cond))
+        #if len(preamble_cond) != 0:
+        #    log.info('%s preamble conditions'%len(preamble_cond))
 
-        conditions.extend(preamble_cond)
+        #conditions.extend(preamble_cond)
         qual_code = gen_conditions_code(conditions)
 
         # Generate the sequence for text, the image
