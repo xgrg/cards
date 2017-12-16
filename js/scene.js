@@ -63,15 +63,14 @@ function addLink(text, choice_effect_function, id){
 }
 
 function playSequence(sequence, i){
-  if (i===undefined){
+  if (i===undefined)
     i=0;
-  }
 
   var accelerate = false;
   interval = sequence[i][1]
   if (accelerate == true) interval = 1000;
   sequence[i][0]();
-  if (i<sequence.length-1){
+  if (i < sequence.length - 1){
     window.setTimeout(
       function(){
         playSequence(sequence, i+1)
@@ -80,19 +79,21 @@ function playSequence(sequence, i){
 }
 
 function displayChoice(choices, i, interval){
-  if (i===undefined){
+  if (i===undefined)
     i=0;
-  }
-  if (interval ===undefined){
+  if (interval ===undefined)
     interval = 300;
-  }
+
   console.log(choices[i][1])
   addLink(choices[i][0], choices[i][1], i+1);
-  if (i<choices.length-1){
+  if (i < choices.length - 1){
     window.setTimeout(
       function(){
         displayChoice(choices, i+1)
       }, interval);
+  }
+  else if (i == choices.length - 1){
+      card_in_progress = false;
   }
 }
 
@@ -121,6 +122,9 @@ function displayImage(img){
 }
 
 function loadScene(scene){
+  if (card_in_progress == true) return undefined;
+  else card_in_progress = true;
+
   console.log(scene);
   reset_scenebox();
   if (scene['audio'] != undefined && audio != scene['audio']){
@@ -152,7 +156,7 @@ function update_cards(){
   }
 }
 
-function update_availbox(cards_to_play){
+function update_availbox(){
    html = ''
    if (cards_to_play.length == 1) {
      $('#availbox').html(html);
@@ -174,7 +178,7 @@ function update_availbox(cards_to_play){
 
 function run_machine() {
   update_cards();
-  update_availbox(cards_to_play)
+  update_availbox();
   delete vartable['@action']
   console.log(cards_to_play)
   if (cards_to_play.length != 0){
@@ -184,27 +188,3 @@ function run_machine() {
     cards_to_play.splice(random, 1);
   }
 }
-
-
-// MAIN FUNCTION
-
-$( document ).ready(function() {
-
-  var f = QueryString.f;
-  var b64 = QueryString.d;
-  fullscreen = parseInt(QueryString.fs);
-
-
-  console.log('file ' + f)
-  if (b64 !== undefined){
-    d = Base64.decode(decodeURIComponent(escape(b64)));
-    d = d.replaceAll('\0', '')
-    console.log(d)
-    vartable = JSON.parse(d);
-  }
-  if (f===undefined){ f = 'story'}
-  scenefile = f;
-  preload(function(){
-     loadScript('md/'+f+'.js', run_machine)
-  });
-});

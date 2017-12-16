@@ -18,7 +18,7 @@ function set_bodybox(){
          '<div id="textbox">'+
          '<div id="dialogbox"></div>'+
          '<div id="choicebox"></div>'+
-         '<div id="availbox"></div>'+
+         '</div><div id="availbox">'+
          '</div>'
    $('#bodybox').html(html)
    config_bodybox();
