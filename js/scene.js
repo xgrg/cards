@@ -35,16 +35,47 @@ function getJsonFromUrl(url) {
   return result;
 }
 
-function addLink(text, choice_effect_function, id){
+function dict_to_text(cond_dict, is_satisfied){
+
+    if (is_satisfied == true)
+      res = '<div><b>You see this for having </b>'
+    else
+      res = '<div><b>You need </b>'
+    dict = {eq: 'equal to'}
+    for (var i = 0 ; i < cond_dict.length ; i++){
+      res = res + '<i>' + cond_dict[i][0] + '</i>';
+      res = res + ' <b>' + dict[cond_dict[i][1]] + '</b> ';
+      res = res + '<i>' + cond_dict[i][2] + '</i>';
+      if (i < cond_dict.length - 1) res = res + ' <b>and</b> ';
+    }
+    if (is_satisfied == false)
+      res = res + '<b> to unlock this</b>'
+    return res + '.';
+}
+
+function addLink(text, choice_effect_function, id, cond_function){
+  var is_satisfied = true;
+  if (cond_function !== undefined)
+     is_satisfied = cond_function();
+
   var newtable = copyMap(vartable);
-  choice_effect_function(newtable);
+  cond_dict = choice_effect_function(newtable);
   console.log('new')
   console.log(newtable)
+  condition = ''
 
+  if (cond_dict.length != 0) {
+    condition = dict_to_text(cond_dict, is_satisfied)
+  }
   b64 = unescape(encodeURIComponent(Base64.encode(JSON.stringify(newtable))))
-  line = "<div><span>" + text +
-      "</span></div> <br><div class=\"gobtn\"><a href=\"?f="
-      + scenefile + "&d=" + b64 + "\">Go.</a></div>";
+  line = "<div><span>" + text + "</span></div> <br>" +
+      condition;
+  if (is_satisfied == true) {
+    line = line + "<div class=\"gobtn\"><a href=\"?f="
+      + scenefile + "&d=" + b64 + "\">Go.</a></div>";}
+  else {
+    line = line + '<div class=\"gobtn\">Go.</div>';
+  }
 
   $("div#choice"+id).html(line);
   $("div#choice"+id).addClass("choice")
@@ -62,53 +93,68 @@ function addLink(text, choice_effect_function, id){
   })
 }
 
-function playSequence(sequence, i){
-  if (i===undefined){
+function playSequence(sequence, i, instantly){
+  if (i===undefined)
     i=0;
-  }
+  if (instantly == undefined)
+    instantly = false;
 
-  var accelerate = false;
   interval = sequence[i][1]
-  if (accelerate == true) interval = 1000;
+  if (instantly == true) interval = 0;
+  console.log(instantly)
   sequence[i][0]();
-  if (i<sequence.length-1){
+  if (i < sequence.length - 1){
     window.setTimeout(
       function(){
-        playSequence(sequence, i+1)
+        playSequence(sequence, i + 1, instantly)
       }, interval);
   }
 }
 
-function displayChoice(choices, i, interval){
-  if (i===undefined){
+function displayChoice(choices, i, instantly, interval){
+  if (i === undefined)
     i=0;
-  }
-  if (interval ===undefined){
+  if (interval === undefined)
     interval = 300;
-  }
+  if (instantly == undefined)
+    instantly = false;
+  if (instantly == true)
+    interval = 0;
+  else
+    interval = 300;
+
   console.log(choices[i][1])
-  addLink(choices[i][0], choices[i][1], i+1);
-  if (i<choices.length-1){
+  addLink(choices[i][0], choices[i][1], i+1, choices[i][2]);
+  if (i < choices.length - 1){
     window.setTimeout(
       function(){
-        displayChoice(choices, i+1)
+        displayChoice(choices, i+1, instantly, interval)
       }, interval);
+  }
+  else if (i == choices.length - 1){
+      card_in_progress = false;
+      $('#availbox').show();
+      $('#availbox').addClass("animated");
+      $("#availbox").animateCss("fadeIn");
+
   }
 }
 
-function initChoice(choices){
-  var nb=choices.length;
+function initChoice(choices, instantly){
+  if (instantly == undefined) instantly = false;
+  var nb = choices.length;
   availChoices = [];
-  for (var i=1;i<nb+1;i++){
-    if (choices[i-1].length == 2 || choices[i-1][2]() == true){
+  for (var i = 1 ; i < nb + 1 ; i++){
+
+    //if (choices[i-1].length == 2){
       availChoices.push(choices[i-1]);
       html = $('#choicebox').html();
       j = availChoices.length;
       html = html + "<div id=\"choice"+ j +"\"></div>";
       $('#choicebox').html(html);
-    }
+    //}
   }
-  displayChoice(availChoices)
+  displayChoice(availChoices, 0, instantly)
 }
 
 function displayImage(img){
@@ -120,7 +166,11 @@ function displayImage(img){
 
 }
 
-function loadScene(scene){
+function loadScene(scene, instantly){
+  if (card_in_progress == true) return undefined;
+  else card_in_progress = true;
+  if (instantly == undefined) instantly = false;
+
   console.log(scene);
   reset_scenebox();
   if (scene['audio'] != undefined && audio != scene['audio']){
@@ -134,9 +184,9 @@ function loadScene(scene){
   scene['storylet'](function(){
     addDialog("&nbsp");
     if (scene['choices'] !== undefined){
-      initChoice(scene['choices']);
+      initChoice(scene['choices'], instantly);
     }
-  })
+  }, instantly)
 }
 
 function update_cards(){
@@ -144,7 +194,7 @@ function update_cards(){
   cards_to_play = [];
 
   // Conditions of every card are assessed
-  for (var i=0;i<storylets.length;i++){
+  for (var i = 0 ; i < storylets.length ; i++){
     if (storylets[i]['conditions']() == true){
           console.log(storylets[i]['name'] + ' is played')
           cards_to_play.push(i);
@@ -152,59 +202,38 @@ function update_cards(){
   }
 }
 
-function update_availbox(cards_to_play){
+function update_availbox(){
    html = ''
+   console.log("update_availbox");
    if (cards_to_play.length == 1) {
      $('#availbox').html(html);
      return
    }
    for (var i = 0 ; i < cards_to_play.length ; i++){
       card = storylets[cards_to_play[i]]
-      html = html + '<span cardIndex='+ cards_to_play[i]+
+      html = html + '<span cardIndex=' + cards_to_play[i] +
         '>' + card.name + '</span>'
    }
    $('#availbox').html(html);
+    $('#availbox').hide();
    $('#availbox span').click(function(){
        cardIndex = $(this).attr('cardIndex')
        console.log(cardIndex);
        card = storylets[cardIndex]
-       loadScene(card)
+       loadScene(card, true)
    })
 }
 
 function run_machine() {
   update_cards();
-  update_availbox(cards_to_play)
+  update_availbox();
+
   delete vartable['@action']
   console.log(cards_to_play)
   if (cards_to_play.length != 0){
     random = 0;// Math.floor((Math.random() * cards_to_play.length));
     card = storylets[cards_to_play[random]];
-    loadScene(card)
+    loadScene(card, accelerate)
     cards_to_play.splice(random, 1);
   }
 }
-
-
-// MAIN FUNCTION
-
-$( document ).ready(function() {
-
-  var f = QueryString.f;
-  var b64 = QueryString.d;
-  fullscreen = parseInt(QueryString.fs);
-
-
-  console.log('file ' + f)
-  if (b64 !== undefined){
-    d = Base64.decode(decodeURIComponent(escape(b64)));
-    d = d.replaceAll('\0', '')
-    console.log(d)
-    vartable = JSON.parse(d);
-  }
-  if (f===undefined){ f = 'story'}
-  scenefile = f;
-  preload(function(){
-     loadScript('md/'+f+'.js', run_machine)
-  });
-});
