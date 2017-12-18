@@ -61,8 +61,6 @@ sc:eq:scene_croise_marcheurs
 sc:eq:1
 equip:eq:polaire
 
-
-
 ## Image
 vallter2.jpg
 ## Text
@@ -77,7 +75,19 @@ La montée s’effectue sans encombres mais je transpire rapidement sous la pola
 ### La montée donne chaud. Je retire ma polaire.
 sc:eq:scene_croise_marcheurs
 
+#####
+# FrScene2random
+## Conditions
+sc:eq:1
+@dice:gt:2
 
+## Image
+vallter2.jpg
+## Text
+C'est un test !!
+## Choices
+### Continuer.
+sc:eq:scene_croise_marcheurs
 
 
 

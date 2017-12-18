@@ -7,14 +7,17 @@ def gen_conditions_code(conditions):
     f = []
     res = ''
 
+    vardict = {'@dice': 'Math.floor(Math.random() * 100)'}
+
     fdict = {'eq': '== "%s"',
              'neq' : '!= "%s"',
-             'dice': 'Math.floor((Math.random() * 100) > %s'}
+             'get': '>= %s',
+             'gt': '> %s'}
 
     for var, func, val in conditions:
         f.append('a%s'%(len(f)+1))
-        res =  res + 'function %s(){ return (vartable["%s"]%s); };'\
-            %(f[-1], var, fdict[func]%val)
+        res =  res + 'function %s(){ return (%s%s); };'\
+            %(f[-1], vardict.get(var, 'vartable["%s"]'%var), fdict[func]%val)
 
     #res = '\n%s'%res
     c = ' && '.join(['%s()'%e for e in f]) if len(f) != 0 else 'true'

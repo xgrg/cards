@@ -89,6 +89,25 @@ vallter2.jpg
 
 ******
 
+# FrScene2random
+## Conditions
+| variable   | function   |   value |
+|:-----------|:-----------|--------:|
+| sc         | eq         |       1 |
+| @dice      | gt         |       2 |
+
+## Image
+vallter2.jpg
+## Text
+> C'est un test !!
+## Choices
+### Continuer.
+| variable   | function   | value                  |
+|:-----------|:-----------|:-----------------------|
+| sc         | eq         | scene_croise_marcheurs |
+
+******
+
 # FrScene_croise_marcheurs
 ## Conditions
 | variable   | function   | value                  |
