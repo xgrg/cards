@@ -173,6 +173,28 @@ return cond_dict;}],
 ]
 }
 
+FrScene2random = {
+  name: 'FrScene2random',
+  conditions:function(){
+    function a1(){ return (vartable["sc"]== "1"); };function a2(){ return (Math.floor(Math.random() * 100)> 2); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+  },
+  storylet:function(choice, instantly){
+  if (instantly == undefined) undefined = false;
+   playSequence([
+[function(){displayImage("vallter2.jpg")}, 1000],
+    [function(){addDialog("<p>C'est un test !!</p>", "fadeIn")}, 1000],
+    [choice, 0]],
+    0, instantly)
+  },
+  choices:[
+   ["Continuer.", 
+      function(t){
+       t["sc"] = "scene_croise_marcheurs";
+      cond_dict=[];
+return cond_dict;}],
+]
+}
+
 FrScene_croise_marcheurs = {
   name: 'FrScene_croise_marcheurs',
   conditions:function(){
@@ -1517,7 +1539,7 @@ return cond_dict;}],
 ]
 }
 
-preload_list = ["audio/bg.mp3", "audio/bg.mp3", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
+preload_list = ["audio/bg.mp3", "audio/bg.mp3", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
 
 storylets.push(Début);
 storylets.push(SceneChoixLangues);
@@ -1525,6 +1547,7 @@ storylets.push(SceneChoixLangues2);
 storylets.push(FrScene1);
 storylets.push(FrScene2);
 storylets.push(FrScene2avecpolaire);
+storylets.push(FrScene2random);
 storylets.push(FrScene_croise_marcheurs);
 storylets.push(FrScene_mensonge);
 storylets.push(FrScene_nepasrepondre);
