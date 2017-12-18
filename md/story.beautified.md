@@ -42,3 +42,28 @@ bg
 
 ******
 
+# SceneChoixLangues2
+## Conditions
+| variable   | function   | value   |
+|:-----------|:-----------|:--------|
+| @action    | eq         | begin   |
+
+## Audio
+bg
+## Text
+> Autre texte !!!
+> Youpi !
+## Choices
+### Français
+| variable   | function   | value   |
+|:-----------|:-----------|:--------|
+| lang       | eq         | fr      |
+| sc         | eq         | 0       |
+### Catalan
+| variable   | function   | value   |
+|:-----------|:-----------|:--------|
+| lang       | eq         | ca      |
+| sc         | eq         | 0       |
+
+******
+

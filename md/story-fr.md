@@ -35,6 +35,7 @@ sc:eq:1
 # FrScene2
 ## Conditions
 sc:eq:1
+equip:neq:polaire
 
 
 ## Image
@@ -48,13 +49,35 @@ La station s’éloigne progressivement dans le dos.
 Bien que les télésièges soient à l’arrêt, quelques tâches de neige semblent signaler que la saison de ski est en phase d’approche.
 La montée s’effectue sans encombres.
 ## Choices
+### Continuer.
+sc:eq:scene_croise_marcheurs
+
+
+
+
+#####
+# FrScene2avecpolaire
+## Conditions
+sc:eq:1
+equip:eq:polaire
+
+
+
+## Image
+vallter2.jpg
+## Text
+_14 heures, départ de la station de Vallter_
+
+Le chemin débute en montée suivant le tracé du GR10.
+La station s’éloigne progressivement dans le dos.
+
+Bien que les télésièges soient à l’arrêt, quelques tâches de neige semblent signaler que la saison de ski est en phase d’approche.
+La montée s’effectue sans encombres mais je transpire rapidement sous la polaire, doudone, etc.
+## Choices
 ### La montée donne chaud. Je retire ma polaire.
 sc:eq:scene_croise_marcheurs
 
-@if
-equip:eq:polaire
-### Continuer
-sc:eq:scene_croise_marcheurs
+
 
 
 

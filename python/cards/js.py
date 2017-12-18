@@ -7,13 +7,14 @@ def gen_conditions_code(conditions):
     f = []
     res = ''
 
-    fdict = {'eq': '==',
-             'neq' : '!='}
+    fdict = {'eq': '== "%s"',
+             'neq' : '!= "%s"',
+             'dice': 'Math.floor((Math.random() * 100) > %s'}
 
     for var, func, val in conditions:
         f.append('a%s'%(len(f)+1))
-        res =  res + 'function %s(){ return (vartable["%s"]%s"%s"); };'\
-            %(f[-1], var, fdict[func], val)
+        res =  res + 'function %s(){ return (vartable["%s"]%s); };'\
+            %(f[-1], var, fdict[func]%val)
 
     #res = '\n%s'%res
     c = ' && '.join(['%s()'%e for e in f]) if len(f) != 0 else 'true'
@@ -21,14 +22,18 @@ def gen_conditions_code(conditions):
 
     return res
 
-def gen_choice_effect_code(conditions):
+def gen_choice_effect_code(conditions, cond_dict=[]):
+    def cond_to_str(d):
+        res = '[%s]'%(','.join(['[%s]'%','.join(['"%s"'%each for each in e]) for e in d]))
+        return res
 
     f = []
     fdict = {'eq': '='}
     for var, func, val in conditions:
         f.append('t["%s"] %s "%s";'%(var, fdict[func], val))
     if len(f) == 0: return 'function(t){}';
-    res = 'function(t){\n       %s\n      }'%'\n       '.join(f)
+    res = 'function(t){\n       %s\n      cond_dict=%s;\nreturn cond_dict;}'\
+        %('\n       '.join(f), cond_to_str(cond_dict))
     return res
 
 
@@ -41,12 +46,14 @@ def gen_choice(code):
         # label is the text of the choice, option is the assigned code
         if_func = ''
         if_bit = find_if(option)
+        cond_dict = []
         if not if_bit is None:
+            cond_dict = if_bit[1]
             if_func = ', ' + 'function(){%s} '%gen_conditions_code(if_bit[1])
             option.pop(if_bit[0])
 
         res = res + '   ["%s", \n      %s%s],\n'\
-            %(label, gen_choice_effect_code(option), if_func)
+            %(label, gen_choice_effect_code(option, cond_dict), if_func)
 
     return '  choices:[\n%s]'%res
 
@@ -64,7 +71,7 @@ def gen_storylet_code(code):
             seq = seq + '    [function()%s],\n'%(eachcode)
         return seq
 
-    storylet_code = 'playSequence([\n%s%s%s    [choice, 0]])'\
+    storylet_code = 'playSequence([\n%s%s%s    [choice, 0]],\n    0, instantly)'\
         %("%s", gen_playsequence(code), "%s")
     return storylet_code
 
@@ -101,7 +108,8 @@ def json_to_javascript(j): #, preamble={}):
 
         # Generate the sequence for text, the image
         storylet_code = gen_storylet_code(sc['text']) \
-            if 'text' in sc.keys() else 'playSequence([%s%s    [choice, 0]])'
+            if 'text' in sc.keys() else 'playSequence([%s%s    [choice, 0]],\n'\
+            ' 0, instantly)'
         image = '[function(){displayImage("%s")}, 1000],\n'%sc['image'] \
             if 'image' in sc.keys() else ''
         extra_code = '     ,[%s, 0],\n'%sc['code'] \
@@ -116,7 +124,8 @@ def json_to_javascript(j): #, preamble={}):
         # Compiles everything
         sc_code = '  name: \'%s\',\n%s'\
             '  conditions:function(){\n    %s\n  },\n'\
-            '  storylet:function(choice){\n  %s\n  },\n%s'\
+            '  storylet:function(choice, instantly){\n'\
+            '  if (instantly == undefined) undefined = false;\n   %s\n  },\n%s'\
             %(sc_name, audio, qual_code, storylet_code%(image, extra_code), choices_code)
         scene_js = '%s = {\n%s\n}'%(sc_name, sc_code)
         js = js + scene_js + '\n\n'

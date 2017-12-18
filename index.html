@@ -27,6 +27,7 @@
     var scenefile = '';
     var audio = '';
     var fullscreen = 0;
+    var accelerate = false;
     var card_in_progress = false;
 
   </script>
@@ -40,6 +41,7 @@
     var f = QueryString.f;
     var b64 = QueryString.d;
     fullscreen = parseInt(QueryString.fs);
+    accelerate = (parseInt(QueryString.fast) == 1);
 
 
     console.log('file ' + f)
