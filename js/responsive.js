@@ -88,8 +88,11 @@ function config_bodybox(){
     else if (orientation == 'vertical' || orientation == '0'){
         $('#bodybox').css({'width': w-15,
                         'margin':'0px'})
-        $('body').css({'font-size':'11px',
-                       'width':w-10})
+        if (w<300){
+          $('body').css({'font-size':'11px'})
+        }
+        $('body').css({'width':w-10})
+
         $('#imagebox').css({'width': w-14,
                             'height': h/2})
         $('#textbox').css({'padding': '10px',
