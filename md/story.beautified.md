@@ -34,6 +34,12 @@ bg
 |:-----------|:-----------|:--------|
 | lang       | eq         | fr      |
 | sc         | eq         | 0       |
+
+@if
+
+| variable   | function   |   value |
+|:-----------|:-----------|--------:|
+| @time      | eq         |      10 |
 ### Catalan
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|

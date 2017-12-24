@@ -15,6 +15,7 @@ def gen_conditions_code(conditions):
              'gt': '> %s'}
 
     for var, func, val in conditions:
+        if var == '@time': continue
         f.append('a%s'%(len(f)+1))
         res =  res + 'function %s(){ return (%s%s); };'\
             %(f[-1], vardict.get(var, 'vartable["%s"]'%var), fdict[func]%val)

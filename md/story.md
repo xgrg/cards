@@ -22,10 +22,13 @@ bg
 ### Français
 lang:eq:fr
 sc:eq:0
+@if
+@time:eq:10
 
 ### Catalan
 lang:eq:ca
 sc:eq:0
+
 
 # SceneChoixLangues2
 ## Conditions
