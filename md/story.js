@@ -37,8 +37,8 @@ SceneChoixLangues = {
       function(t){
        t["lang"] = "fr";
        t["sc"] = "0";
-      cond_dict=[];
-return cond_dict;}],
+      cond_dict=[["@time","eq","10"]];
+return cond_dict;}, function(){return (true);} ],
    ["Catalan", 
       function(t){
        t["lang"] = "ca";

@@ -53,6 +53,26 @@ function dict_to_text(cond_dict, is_satisfied){
     return res + '.';
 }
 
+function is_time_in_choice(dict){
+  var res = [];
+  for (var i=0; i< dict.length; i++){
+    res.push(dict[i][0]);
+  }
+  return res.indexOf('@time');
+}
+
+function countdown(time, index){
+  interval = 1000;
+  $('span#time'+index).text(' ('+time+')');
+  if (time !=0){
+    window.setTimeout(function(){ countdown(time-1, index); }, interval);
+  }
+  else {
+    $('div#choice'+index).fadeOut(300);
+    console.log($('div#choice'+index));
+  }
+}
+
 function addLink(text, choice_effect_function, id, cond_function){
   var is_satisfied = true;
   if (cond_function !== undefined)
@@ -60,19 +80,24 @@ function addLink(text, choice_effect_function, id, cond_function){
 
   var newtable = copyMap(vartable);
   cond_dict = choice_effect_function(newtable);
-  console.log('new')
-  console.log(newtable)
-  condition = ''
 
+  time = is_time_in_choice(cond_dict)
+  if (time != -1) {
+    cd = cond_dict[time][2];
+    console.log(cd);
+    cond_dict.splice(time)
+  }
+
+  condition = ''
   if (cond_dict.length != 0) {
     condition = dict_to_text(cond_dict, is_satisfied)
   }
   b64 = unescape(encodeURIComponent(Base64.encode(JSON.stringify(newtable))))
-  line = "<div><span>" + text + "</span></div> <br>" +
-      condition;
+  line = "<div><span>" + text + "</span></div> <br>" + condition;
   if (is_satisfied == true) {
     line = line + "<div class=\"gobtn\"><a href=\"?f="
-      + scenefile + "&d=" + b64 + "\">Go.</a></div>";}
+      + scenefile + "&d=" + b64 + "\">Go.</a><span id='time"+id+"'></span></div>";
+  }
   else {
     line = line + '<div class=\"gobtn\">Go.</div>';
   }
@@ -91,6 +116,10 @@ function addLink(text, choice_effect_function, id, cond_function){
       vartable = JSON.parse(d);
       run_machine();
   })
+
+  if (time != -1)
+    countdown(cd, id);
+
 }
 
 function playSequence(sequence, i, instantly){
@@ -114,15 +143,13 @@ function playSequence(sequence, i, instantly){
 function displayChoice(choices, i, instantly, interval){
   if (i === undefined)
     i=0;
-  if (interval === undefined)
+  if (interval === undefined || interval === false){
     interval = 300;
-  if (instantly == undefined)
     instantly = false;
-  if (instantly == true)
+  }
+  else {
     interval = 0;
-  else
-    interval = 300;
-
+  }
   console.log(choices[i][1])
   addLink(choices[i][0], choices[i][1], i+1, choices[i][2]);
   if (i < choices.length - 1){
