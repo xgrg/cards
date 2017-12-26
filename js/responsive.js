@@ -60,8 +60,8 @@ function loadScript(url, callback)
 
 function config_bodybox(){
     console.log('config bodybox')
-    h = window.innerHeight
-    w = window.innerWidth
+    h = screen.height - 200;
+    w = screen.width;
     if (w<h){ orientation = 'vertical'; }
     else { orientation = 'horizontal' }
     if (orientation == 'horizontal'){
