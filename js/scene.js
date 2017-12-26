@@ -61,32 +61,37 @@ function is_time_in_choice(dict){
   return res.indexOf('@time');
 }
 
-function countdown(time, index){
+function countdown(time, index){// timerkey){
   interval = 1000;
   $('span#time'+index).text(' ('+time+')');
-  if (time !=0){
-    window.setTimeout(function(){ countdown(time-1, index); }, interval);
+  if (time !=0 ){
+    if (timing == true)
+      window.setTimeout(function(){ countdown(time-1, index); }, interval);
   }
   else {
     $('div#choice'+index).fadeOut(300);
+    $('#availbox').show();
+    $('#availbox').addClass("animated");
+    $("#availbox").animateCss("fadeIn");
     console.log($('div#choice'+index));
   }
 }
 
 function addLink(text, choice_effect_function, id, cond_function){
   var is_satisfied = true;
-  if (cond_function !== undefined)
-     is_satisfied = cond_function();
-
   var newtable = copyMap(vartable);
   cond_dict = choice_effect_function(newtable);
 
   time = is_time_in_choice(cond_dict)
-  if (time != -1) {
+  if (time != -1) { // choix chronométré
     cd = cond_dict[time][2];
     console.log(cd);
     cond_dict.splice(time)
   }
+
+  if (cond_function !== undefined)
+    is_satisfied = cond_function();
+
 
   condition = ''
   if (cond_dict.length != 0) {
@@ -114,12 +119,14 @@ function addLink(text, choice_effect_function, id, cond_function){
       d = d.replaceAll('\0', '')
       console.log(d)
       vartable = JSON.parse(d);
+      timing = false;
       run_machine();
   })
 
-  if (time != -1)
-    countdown(cd, id);
-
+  if (time != -1){
+    timing = true;
+    countdown(cd, id); //, timerkey);
+  }
 }
 
 function playSequence(sequence, i, instantly){
@@ -160,9 +167,11 @@ function displayChoice(choices, i, instantly, interval){
   }
   else if (i == choices.length - 1){
       card_in_progress = false;
-      $('#availbox').show();
-      $('#availbox').addClass("animated");
-      $("#availbox").animateCss("fadeIn");
+      if (timing == false){
+          $('#availbox').show();
+          $('#availbox').addClass("animated");
+          $("#availbox").animateCss("fadeIn");
+      }
 
   }
 }

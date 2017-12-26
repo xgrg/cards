@@ -72,6 +72,8 @@ function config_bodybox(){
       w = w - 10;
       h = w*1.4;
     }
+    console.log('width' + w);
+    console.log('height' + h);
 
     $("#orientation").text(orientation + ' ' + w + ' / ' + h)
 
