@@ -66,11 +66,11 @@ function config_bodybox(){
     else { orientation = 'horizontal' }
     if (orientation == 'horizontal'){
       h = h - 150;
-      w = h/1.5;
+      w = h / 1.5;
     }
     else {
       w = w - 10;
-      h = w*1.4;
+      h = w * 1.4;
     }
     console.log('width' + w);
     console.log('height' + h);
@@ -80,7 +80,8 @@ function config_bodybox(){
     if (orientation == 'horizontal'){
         $('#bodybox').css({'width': w})
         $('body').css({'font-size':'20px',
-                       'width':w})
+                       'width':w,
+                       'padding':'20px'})
         $('#textbox').css({'padding': '20px',
                            'height': h/2,
                            'width': w*.94})
@@ -88,17 +89,17 @@ function config_bodybox(){
                             'height': h/2})
     }
     else if (orientation == 'vertical' || orientation == '0'){
-        $('#bodybox').css({'width': w-15,
+        $('#bodybox').css({'width': w - 15,
                         'margin':'0px'})
-        if (w<300){
-          $('body').css({'font-size':'11px'})
+        if (w < 400){
+          $('body').css({'font-size':'13px'})
         }
-        $('body').css({'width':w-10})
+        $('body').css({'width':w - 10})
 
-        $('#imagebox').css({'width': w-14,
-                            'height': h/2})
+        $('#imagebox').css({'width': w - 14,
+                            'height': h / 2})
         $('#textbox').css({'padding': '10px',
-                           'height': h/2,
-                           'width': w-34})
+                           'height': h / 2,
+                           'width': w - 34})
     }
 }
