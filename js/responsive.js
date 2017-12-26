@@ -90,7 +90,7 @@ function config_bodybox(){
     else if (orientation == 'vertical' || orientation == '0'){
         $('#bodybox').css({'width': w-15,
                         'margin':'0px'})
-        if (w<300){
+        if (w<400){
           $('body').css({'font-size':'11px'})
         }
         $('body').css({'width':w-10})
