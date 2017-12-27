@@ -181,7 +181,7 @@ FrScene_nepasrepondre = {
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
    playSequence([
-    [function(){addDialog("<p>Segueixo amb la pujada ni sense respondre al home, que no pot impedir una reacció de sorpresa.</p>", "fadeIn")}, 1000],
+    [function(){addDialog("<p>Je poursuis la montée sans adresser un regard à l'homme, qui montre une réaction de surprise.</p>", "fadeIn")}, 1000],
     [choice, 0]],
     0, instantly)
   },
@@ -327,7 +327,7 @@ return cond_dict;}],
 FrScene6 = {
   name: 'FrScene6',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "4"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== "5"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;

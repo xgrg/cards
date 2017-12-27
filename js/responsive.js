@@ -91,7 +91,7 @@ function config_bodybox(){
     else if (orientation == 'vertical' || orientation == '0'){
         if (w < 400) { // PHONE
           $('body').css({'font-size':'13px'})
-          h = h + 200
+          h = h + 200;
           $('body').css({'width':w - 10, 'height': h})
 
         }
