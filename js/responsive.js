@@ -77,7 +77,7 @@ function config_bodybox(){
 
     $("#orientation").text(orientation + ' ' + w + ' / ' + h)
 
-    if (orientation == 'horizontal'){
+    if (orientation == 'horizontal'){ // DESKTOP
         $('#bodybox').css({'width': w})
         $('body').css({'font-size':'20px',
                        'width':w,
@@ -89,12 +89,18 @@ function config_bodybox(){
                             'height': h * 0.4})
     }
     else if (orientation == 'vertical' || orientation == '0'){
+        if (w < 400) { // PHONE
+          $('body').css({'font-size':'13px'})
+          $('body').css({'width':w - 10, 'height': h + 100})
+
+        }
+        else { // TABLET
+          h = h * 0.7;
+          $('body').css({'width':w - 10, 'height': h})
+        }
+
         $('#bodybox').css({'width': w - 15,
                         'margin':'0px'})
-        if (w < 400){
-          $('body').css({'font-size':'13px'})
-        }
-        $('body').css({'width':w - 10})
 
         $('#imagebox').css({'width': w - 14,
                             'height': h * 0.4})
