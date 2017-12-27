@@ -80,7 +80,8 @@ function config_bodybox(){
     if (orientation == 'horizontal'){
         $('#bodybox').css({'width': w})
         $('body').css({'font-size':'20px',
-                       'width':w})
+                       'width':w,
+                       'padding':'20px'})
         $('#textbox').css({'padding': '20px',
                            'height': h/2,
                            'width': w*.94})

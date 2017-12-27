@@ -63,8 +63,9 @@ function is_time_in_choice(dict){
 
 function countdown(time, index){// timerkey){
   interval = 1000;
-  $('span#time'+index).text(' ('+time+')');
-  if (time !=0 ){
+  if (timing == false) return;
+  $('span#time' + index).text(' (' + time + ')');
+  if (time !=0){
     if (timing == true)
       window.setTimeout(function(){ countdown(time-1, index); }, interval);
   }
