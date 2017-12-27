@@ -95,7 +95,7 @@ function config_bodybox(){
 
         }
         else { // TABLET
-          h = h * 0.8;
+          
           $('body').css({'width':w - 10, 'height': h})
         }
 
