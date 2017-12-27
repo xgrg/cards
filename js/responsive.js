@@ -91,11 +91,11 @@ function config_bodybox(){
     else if (orientation == 'vertical' || orientation == '0'){
         if (w < 400) { // PHONE
           $('body').css({'font-size':'13px'})
-          $('body').css({'width':w - 10, 'height': h + 100})
+          $('body').css({'width':w - 10, 'height': h + 200})
 
         }
         else { // TABLET
-          h = h * 0.7;
+          h = h * 0.8;
           $('body').css({'width':w - 10, 'height': h})
         }
 
