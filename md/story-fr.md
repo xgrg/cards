@@ -9,7 +9,7 @@ sc:eq:0
 
 
 ## Image
-vallter.jpg
+bg2.gif
 ## Text
 _13 heures 30, route de Vallter, Pyrénées Catalanes_
 
@@ -137,7 +137,7 @@ sc:eq:2
 sc:eq:nepasrepondre
 
 ## Text
-Segueixo amb la pujada ni sense respondre al home, que no pot impedir una reacció de sorpresa.
+Je poursuis la montée sans adresser un regard à l'homme, qui montre une réaction de surprise.
 ## Choices
 ### Continuer
 sc:eq:2
@@ -239,7 +239,7 @@ sc:eq:5
 #####
 # FrScene6
 ## Conditions
-sc:eq:4
+sc:eq:5
 
 
 ## Image

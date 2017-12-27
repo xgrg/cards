@@ -1,6 +1,6 @@
 function adjustimg(){
   console.log("adjust2")
-    $('#imagebox img').css({'max-height': h/2, 'width':w})
+    $('#imagebox img').css({'max-height': h * 0.4, 'width':w})
                             //'border': '1px solid white'})
 }
 
@@ -65,7 +65,7 @@ function config_bodybox(){
     if (w<h){ orientation = 'vertical'; }
     else { orientation = 'horizontal' }
     if (orientation == 'horizontal'){
-      h = h - 150;
+      h = h * 0.98;
       w = h / 1.5;
     }
     else {
@@ -77,29 +77,35 @@ function config_bodybox(){
 
     $("#orientation").text(orientation + ' ' + w + ' / ' + h)
 
-    if (orientation == 'horizontal'){
+    if (orientation == 'horizontal'){ // DESKTOP
         $('#bodybox').css({'width': w})
         $('body').css({'font-size':'20px',
                        'width':w,
                        'padding':'20px'})
         $('#textbox').css({'padding': '20px',
-                           'height': h/2,
-                           'width': w*.94})
-        $('#imagebox').css({'width': w*.98,
-                            'height': h/2})
+                           'height': h * 0.6,
+                           'width': w * .94})
+        $('#imagebox').css({'width': w * .98,
+                            'height': h * 0.4})
     }
     else if (orientation == 'vertical' || orientation == '0'){
+        if (w < 400) { // PHONE
+          $('body').css({'font-size':'13px'})
+          $('body').css({'width':w - 10, 'height': h})
+
+        }
+        else { // TABLET
+          h = h - 200;
+          $('body').css({'width':w - 10, 'height': h})
+        }
+
         $('#bodybox').css({'width': w - 15,
                         'margin':'0px'})
-        if (w < 400){
-          $('body').css({'font-size':'13px'})
-        }
-        $('body').css({'width':w - 10})
 
         $('#imagebox').css({'width': w - 14,
-                            'height': h / 2})
+                            'height': h * 0.4})
         $('#textbox').css({'padding': '10px',
-                           'height': h / 2,
+                           'height': h * 0.6,
                            'width': w - 34})
     }
 }
