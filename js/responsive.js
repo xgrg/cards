@@ -92,11 +92,11 @@ function config_bodybox(){
         if (w < 400) { // PHONE
           $('body').css({'font-size':'13px'})
           h = h + 40
-          $('body').css({'width':w - 10, 'height': h + 200})
+          $('body').css({'width':w - 10, 'height': h})
 
         }
         else { // TABLET
-          h = h - 40
+          h = h - 60
           $('body').css({'width':w - 10, 'height': h})
         }
 
