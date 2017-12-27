@@ -1,6 +1,6 @@
 function adjustimg(){
   console.log("adjust2")
-    $('#imagebox img').css({'max-height': h/2, 'width':w})
+    $('#imagebox img').css({'max-height': h * 0.4, 'width':w})
                             //'border': '1px solid white'})
 }
 
@@ -83,10 +83,10 @@ function config_bodybox(){
                        'width':w,
                        'padding':'20px'})
         $('#textbox').css({'padding': '20px',
-                           'height': h/2,
-                           'width': w*.94})
-        $('#imagebox').css({'width': w*.98,
-                            'height': h/2})
+                           'height': h * 0.6,
+                           'width': w * .94})
+        $('#imagebox').css({'width': w * .98,
+                            'height': h * 0.4})
     }
     else if (orientation == 'vertical' || orientation == '0'){
         $('#bodybox').css({'width': w - 15,
@@ -97,9 +97,9 @@ function config_bodybox(){
         $('body').css({'width':w - 10})
 
         $('#imagebox').css({'width': w - 14,
-                            'height': h / 2})
+                            'height': h * 0.4})
         $('#textbox').css({'padding': '10px',
-                           'height': h / 2,
+                           'height': h * 0.6,
                            'width': w - 34})
     }
 }
