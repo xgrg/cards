@@ -65,7 +65,7 @@ function config_bodybox(){
     if (w<h){ orientation = 'vertical'; }
     else { orientation = 'horizontal' }
     if (orientation == 'horizontal'){
-      h = h - 150;
+      h = h * 0.98;
       w = h / 1.5;
     }
     else {

@@ -86,7 +86,7 @@ FrScene1 = {
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
    playSequence([
-[function(){displayImage("vallter.jpg")}, 1000],
+[function(){displayImage("bg2.gif")}, 1000],
     [function(){addDialog("<p><em>13 heures 30, route de Vallter, Pyrénées Catalanes</em></p>", "fadeIn")}, 1000],
     [function(){addDialog("", "fadeIn")}, 1000],
     [function(){addDialog("<p>Les degrés fondent à mesure que s’enchaînent les virages. A l’approche du parking quasi-vide de la station de Vallter 2000, le compteur indique 4 timides degrés.</p>", "fadeIn")}, 1000],
@@ -1539,7 +1539,7 @@ return cond_dict;}],
 ]
 }
 
-preload_list = ["audio/bg.mp3", "audio/bg.mp3", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
+preload_list = ["audio/bg.mp3", "audio/bg.mp3", "images/bg2.gif.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
 
 storylets.push(Début);
 storylets.push(SceneChoixLangues);
