@@ -1,7 +1,7 @@
-FrScene1 = {
+scene0 = {
   name: 'FrScene1',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "0"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 0); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -19,29 +19,29 @@ FrScene1 = {
    ["J’enfile mon coupe-vent.", 
       function(t){
        t["equip"] = "coupevent";
-       t["sc"] = "1";
+       t["sc"] = 1;
        t["dice"] = Math.floor(Math.random() * 100);
       cond_dict=[];
 return cond_dict;}],
    ["J’enfile polaire, doudoune et coupe-vent.", 
       function(t){
        t["equip"] = "polaire";
-       t["sc"] = "1";
+       t["sc"] = 1;
       cond_dict=[];
 return cond_dict;}],
    ["Réflexion faite, je pars en t-shirt.", 
       function(t){
        t["equip"] = "tshirt";
-       t["sc"] = "1";
+       t["sc"] = 1;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene2 = {
+scene1 = {
   name: 'FrScene2',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "1"); };function a2(){ return (vartable["equip"]!= "polaire"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 1); };function a2(){ return (vartable["equip"]!= "polaire"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -66,20 +66,20 @@ return cond_dict;}],
    ["Le dé a fait plus de 50.", 
       function(t){
        t["sc"] = "scene_croise_marcheurs";
-      cond_dict=[["dice","get","50"]];
+      cond_dict=[["dice", "get", 50]];
 return cond_dict;}, function(){function a1(){ return (vartable["dice"]>= 50); };return (a1());} ],
    ["Le dé a fait moins de 50.", 
       function(t){
        t["sc"] = "scene_croise_marcheurs";
-      cond_dict=[["dice","lt","50"]];
+      cond_dict=[["dice", "lt", 50]];
 return cond_dict;}, function(){function a1(){ return (vartable["dice"]< 50); };return (a1());} ],
 ]
 }
 
-FrScene2avecpolaire = {
+scene2 = {
   name: 'FrScene2avecpolaire',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "1"); };function a2(){ return (vartable["equip"]== "polaire"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 1); };function a2(){ return (vartable["equip"]== "polaire"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -104,10 +104,10 @@ return cond_dict;}],
 ]
 }
 
-FrScene2random = {
+scene3 = {
   name: 'FrScene2random',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "1"); };function a2(){ return (Math.floor(Math.random() * 100)> 2); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 1); };function a2(){ return (Math.floor(Math.random() * 100)> 2); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -126,7 +126,7 @@ return cond_dict;}],
 ]
 }
 
-FrScene_croise_marcheurs = {
+scene4 = {
   name: 'FrScene_croise_marcheurs',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "scene_croise_marcheurs"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
@@ -161,7 +161,7 @@ return cond_dict;}],
 ]
 }
 
-FrScene_mensonge = {
+scene5 = {
   name: 'FrScene_mensonge',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "mensonge"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
@@ -178,13 +178,13 @@ FrScene_mensonge = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "2";
+       t["sc"] = 2;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene_nepasrepondre = {
+scene6 = {
   name: 'FrScene_nepasrepondre',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "nepasrepondre"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
@@ -199,13 +199,13 @@ FrScene_nepasrepondre = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "2";
+       t["sc"] = 2;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene_verite = {
+scene7 = {
   name: 'FrScene_verite',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "verite"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
@@ -222,16 +222,16 @@ FrScene_verite = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "2";
+       t["sc"] = 2;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene3 = {
+scene8 = {
   name: 'FrScene3',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "2"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 2); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -249,18 +249,18 @@ FrScene3 = {
 return cond_dict;}],
    ["Je continue.", 
       function(t){
-       t["sc"] = "3";
+       t["sc"] = 3;
       cond_dict=[];
 return cond_dict;}],
    ["Le vent souffle au col. J'enfile mon coupe-vent pour poursuivre la route.", 
       function(t){
-       t["sc"] = "3";
-      cond_dict=[["equip","eq","tshirt"]];
+       t["sc"] = 3;
+      cond_dict=[["equip", "eq", "tshirt"]];
 return cond_dict;}, function(){function a1(){ return (vartable["equip"]== "tshirt"); };return (a1());} ],
 ]
 }
 
-FrScene3b = {
+scene9 = {
   name: 'FrScene3b',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "back-to-vallter"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
@@ -279,16 +279,16 @@ FrScene3b = {
   choices:[
    ["Recommencer", 
       function(t){
-       t["sc"] = "0";
+       t["sc"] = 0;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene4 = {
+scene10 = {
   name: 'FrScene4',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "3"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 3); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -305,16 +305,16 @@ FrScene4 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "4";
+       t["sc"] = 4;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene5 = {
+scene11 = {
   name: 'FrScene5',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "4"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 4); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -329,16 +329,16 @@ FrScene5 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "5";
+       t["sc"] = 5;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene6 = {
+scene12 = {
   name: 'FrScene6',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "5"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 5); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -351,21 +351,21 @@ FrScene6 = {
   choices:[
    ["C’est hors du sentier. Je poursuis ma route sans y prêter attention.", 
       function(t){
-       t["sc"] = "7";
+       t["sc"] = 7;
       cond_dict=[];
 return cond_dict;}],
    ["Je me rapproche.", 
       function(t){
-       t["sc"] = "6";
+       t["sc"] = 6;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene7 = {
+scene13 = {
   name: 'FrScene7',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "6"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 6); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -389,21 +389,21 @@ FrScene7 = {
   choices:[
    ["Je reprends ma route", 
       function(t){
-       t["sc"] = "7";
+       t["sc"] = 7;
       cond_dict=[];
 return cond_dict;}],
    ["Je ramasse un morceau de bois avant de poursuivre mon chemin", 
       function(t){
-       t["sc"] = "7";
+       t["sc"] = 7;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene8 = {
+scene14 = {
   name: 'FrScene8',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "7"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 7); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -416,16 +416,16 @@ FrScene8 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "8";
+       t["sc"] = 8;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene9 = {
+scene15 = {
   name: 'FrScene9',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "8"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 8); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -442,21 +442,21 @@ FrScene9 = {
   choices:[
    ["J’ouvre les volets", 
       function(t){
-       t["sc"] = "9";
+       t["sc"] = 9;
       cond_dict=[];
 return cond_dict;}],
    ["Pas de temps à perdre. Il faut couper du bois avant que la nuit ne tombe.", 
       function(t){
-       t["sc"] = "9";
+       t["sc"] = 9;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene10 = {
+scene16 = {
   name: 'FrScene10',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "9"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 9); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -473,16 +473,16 @@ FrScene10 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "10";
+       t["sc"] = 10;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene11 = {
+scene17 = {
   name: 'FrScene11',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "10"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 10); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -498,16 +498,16 @@ FrScene11 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "11";
+       t["sc"] = 11;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene12 = {
+scene18 = {
   name: 'FrScene12',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "11"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 11); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -523,16 +523,16 @@ FrScene12 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "12";
+       t["sc"] = 12;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene13 = {
+scene19 = {
   name: 'FrScene13',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "12"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 12); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -547,29 +547,29 @@ FrScene13 = {
   choices:[
    ["Je cache le sac-à-dos sous un banc.", 
       function(t){
-       t["sc"] = "13";
+       t["sc"] = 13;
        t["sac"] = "banc";
       cond_dict=[];
 return cond_dict;}],
    ["J’accroche le sac à l’un des clous plantés aux murs de la cabane", 
       function(t){
-       t["sc"] = "13";
+       t["sc"] = 13;
        t["sac"] = "clou";
       cond_dict=[];
 return cond_dict;}],
    ["Je retire la nourriture du sac et la suspends à l’un des fils traversant la pièce.", 
       function(t){
-       t["sc"] = "13";
+       t["sc"] = 13;
        t["sac"] = "nourriture";
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene14nourrit = {
+scene20 = {
   name: 'FrScene14nourrit',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "13"); };function a2(){ return (vartable["sac"]== "nourriture"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 13); };function a2(){ return (vartable["sac"]== "nourriture"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -581,16 +581,16 @@ FrScene14nourrit = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "14";
+       t["sc"] = 14;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene14clou = {
+scene21 = {
   name: 'FrScene14clou',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "14"); };function a2(){ return (vartable["sac"]== "clou"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 14); };function a2(){ return (vartable["sac"]== "clou"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -609,16 +609,16 @@ FrScene14clou = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "14";
+       t["sc"] = 14;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene14banc = {
+scene22 = {
   name: 'FrScene14banc',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "13"); };function a2(){ return (vartable["sac"]== "banc"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 13); };function a2(){ return (vartable["sac"]== "banc"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -638,16 +638,16 @@ FrScene14banc = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "15";
+       t["sc"] = 15;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene15 = {
+scene23 = {
   name: 'FrScene15',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "14"); };function a2(){ return (vartable["sac"]!= "banc"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 14); };function a2(){ return (vartable["sac"]!= "banc"); };function a3(){ return (vartable["lang"]== "fr"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -664,16 +664,16 @@ FrScene15 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "15";
+       t["sc"] = 15;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene16 = {
+scene24 = {
   name: 'FrScene16',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "15"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 15); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -688,16 +688,16 @@ FrScene16 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "16";
+       t["sc"] = 16;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene17 = {
+scene25 = {
   name: 'FrScene17',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "16"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 16); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -710,16 +710,16 @@ FrScene17 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "17";
+       t["sc"] = 17;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene18 = {
+scene26 = {
   name: 'FrScene18',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "17"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 17); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -734,16 +734,16 @@ FrScene18 = {
   choices:[
    ["Continuer", 
       function(t){
-       t["sc"] = "18";
+       t["sc"] = 18;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-FrScene19 = {
+scene27 = {
   name: 'FrScene19',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "18"); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 18); };function a2(){ return (vartable["lang"]== "fr"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -756,7 +756,7 @@ FrScene19 = {
   choices:[
    ["Recommencer", 
       function(t){
-       t["sc"] = "0";
+       t["sc"] = 0;
       cond_dict=[];
 return cond_dict;}],
 ]
@@ -764,31 +764,31 @@ return cond_dict;}],
 
 preload_list = ["images/bg2.gif.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
 
-storylets.push(FrScene1);
-storylets.push(FrScene2);
-storylets.push(FrScene2avecpolaire);
-storylets.push(FrScene2random);
-storylets.push(FrScene_croise_marcheurs);
-storylets.push(FrScene_mensonge);
-storylets.push(FrScene_nepasrepondre);
-storylets.push(FrScene_verite);
-storylets.push(FrScene3);
-storylets.push(FrScene3b);
-storylets.push(FrScene4);
-storylets.push(FrScene5);
-storylets.push(FrScene6);
-storylets.push(FrScene7);
-storylets.push(FrScene8);
-storylets.push(FrScene9);
-storylets.push(FrScene10);
-storylets.push(FrScene11);
-storylets.push(FrScene12);
-storylets.push(FrScene13);
-storylets.push(FrScene14nourrit);
-storylets.push(FrScene14clou);
-storylets.push(FrScene14banc);
-storylets.push(FrScene15);
-storylets.push(FrScene16);
-storylets.push(FrScene17);
-storylets.push(FrScene18);
-storylets.push(FrScene19);
+storylets.push(scene0);
+storylets.push(scene1);
+storylets.push(scene2);
+storylets.push(scene3);
+storylets.push(scene4);
+storylets.push(scene5);
+storylets.push(scene6);
+storylets.push(scene7);
+storylets.push(scene8);
+storylets.push(scene9);
+storylets.push(scene10);
+storylets.push(scene11);
+storylets.push(scene12);
+storylets.push(scene13);
+storylets.push(scene14);
+storylets.push(scene15);
+storylets.push(scene16);
+storylets.push(scene17);
+storylets.push(scene18);
+storylets.push(scene19);
+storylets.push(scene20);
+storylets.push(scene21);
+storylets.push(scene22);
+storylets.push(scene23);
+storylets.push(scene24);
+storylets.push(scene25);
+storylets.push(scene26);
+storylets.push(scene27);

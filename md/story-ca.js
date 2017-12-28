@@ -1,7 +1,7 @@
-CaScene1 = {
+scene0 = {
   name: 'CaScene1',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "0"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 0); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -18,29 +18,29 @@ CaScene1 = {
   choices:[
    ["Portaré la meva jaqueta tallavent.", 
       function(t){
-       t["sc"] = "1";
+       t["sc"] = 1;
        t["equip"] = "coupevent";
       cond_dict=[];
 return cond_dict;}],
    ["Portaré el forro polar, abric i jaqueta tallavent.", 
       function(t){
-       t["sc"] = "1";
+       t["sc"] = 1;
        t["equip"] = "polaire";
       cond_dict=[];
 return cond_dict;}],
    ["Ho he pensat, i finalment surto amb la samarreta.", 
       function(t){
-       t["sc"] = "1";
+       t["sc"] = 1;
        t["equip"] = "tshirt";
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene2 = {
+scene1 = {
   name: 'CaScene2',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "1"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 1); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -59,8 +59,8 @@ CaScene2 = {
   choices:[
    ["La pujada dona calor. Trec el meu forro polar.", 
       function(t){
-       t["sc"] = "scene_croise_marcheurs";
-      cond_dict=[["equip","eq","polaire"]];
+       t["sc"] = scene_croise_marcheurs;
+      cond_dict=[["equip", "eq", "polaire"]];
 return cond_dict;}, function(){function a1(){ return (vartable["equip"]== "polaire"); };return (a1());} ],
    ["Endavant", 
       function(t){
@@ -70,7 +70,7 @@ return cond_dict;}],
 ]
 }
 
-CaScene_croise_marcheurs = {
+scene2 = {
   name: 'CaScene_croise_marcheurs',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "scene_croise_marcheurs"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
@@ -105,7 +105,7 @@ return cond_dict;}],
 ]
 }
 
-CaScene_mensonge = {
+scene3 = {
   name: 'CaScene_mensonge',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "mensonge"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
@@ -122,13 +122,13 @@ CaScene_mensonge = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "2";
+       t["sc"] = 2;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene_nepasrepondre = {
+scene4 = {
   name: 'CaScene_nepasrepondre',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "nepasrepondre"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
@@ -143,13 +143,13 @@ CaScene_nepasrepondre = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "2";
+       t["sc"] = 2;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene_verite = {
+scene5 = {
   name: 'CaScene_verite',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "verite"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
@@ -166,16 +166,16 @@ CaScene_verite = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "2";
+       t["sc"] = 2;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene3 = {
+scene6 = {
   name: 'CaScene3',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "2"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 2); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -188,23 +188,23 @@ CaScene3 = {
   choices:[
    ["Es massa tard per passar al Nord. Torno cap a Vallter.", 
       function(t){
-       t["sc"] = "back-to-vallter";
+       t["sc"] = back-to-vallter;
       cond_dict=[];
 return cond_dict;}],
    ["Segueixo.", 
       function(t){
-       t["sc"] = "3";
+       t["sc"] = 3;
       cond_dict=[];
 return cond_dict;}],
    ["El vent bufa al coll. Em poso la meva jaqueta talla-vent per seguir el camí.", 
       function(t){
-       t["sc"] = "3";
-      cond_dict=[["equip","eq","tshirt"]];
+       t["sc"] = 3;
+      cond_dict=[["equip", "eq", "tshirt"]];
 return cond_dict;}, function(){function a1(){ return (vartable["equip"]== "tshirt"); };return (a1());} ],
 ]
 }
 
-CaScene3b = {
+scene7 = {
   name: 'CaScene3b',
   conditions:function(){
     function a1(){ return (vartable["sc"]== "back-to-vallter"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
@@ -223,16 +223,16 @@ CaScene3b = {
   choices:[
    ["Tornar al inici", 
       function(t){
-       t["sc"] = "0";
+       t["sc"] = 0;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene4 = {
+scene8 = {
   name: 'CaScene4',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "3"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 3); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -249,16 +249,16 @@ CaScene4 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "4";
+       t["sc"] = 4;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene5 = {
+scene9 = {
   name: 'CaScene5',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "4"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 4); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -273,16 +273,16 @@ CaScene5 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "5";
+       t["sc"] = 5;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene6 = {
+scene10 = {
   name: 'CaScene6',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "5"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 5); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -295,21 +295,21 @@ CaScene6 = {
   choices:[
    ["Esta fora del sender. Segueixo el meu camí sense hi fer cas.", 
       function(t){
-       t["sc"] = "7";
+       t["sc"] = 7;
       cond_dict=[];
 return cond_dict;}],
    ["M’hi apropo.", 
       function(t){
-       t["sc"] = "6";
+       t["sc"] = 6;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene7 = {
+scene11 = {
   name: 'CaScene7',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "6"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 6); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -333,21 +333,21 @@ CaScene7 = {
   choices:[
    ["Segueixo amb la meva ruta.", 
       function(t){
-       t["sc"] = "7";
+       t["sc"] = 7;
       cond_dict=[];
 return cond_dict;}],
    ["Recullo un tros de fusta abans d’anar mes endavant.", 
       function(t){
-       t["sc"] = "7";
+       t["sc"] = 7;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene8 = {
+scene12 = {
   name: 'CaScene8',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "7"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 7); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -360,16 +360,16 @@ CaScene8 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "8";
+       t["sc"] = 8;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene9 = {
+scene13 = {
   name: 'CaScene9',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "8"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 8); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -386,21 +386,21 @@ CaScene9 = {
   choices:[
    ["Obro les persianes.", 
       function(t){
-       t["sc"] = "9";
+       t["sc"] = 9;
       cond_dict=[];
 return cond_dict;}],
    ["Cal no perdre temps. Cal tallar fusta abans de que la nit caigui.", 
       function(t){
-       t["sc"] = "9";
+       t["sc"] = 9;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene10 = {
+scene14 = {
   name: 'CaScene10',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "9"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 9); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -417,16 +417,16 @@ CaScene10 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "10";
+       t["sc"] = 10;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene11 = {
+scene15 = {
   name: 'CaScene11',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "10"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 10); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -442,16 +442,16 @@ CaScene11 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "11";
+       t["sc"] = 11;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene12 = {
+scene16 = {
   name: 'CaScene12',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "11"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 11); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -467,16 +467,16 @@ CaScene12 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "12";
+       t["sc"] = 12;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene13 = {
+scene17 = {
   name: 'CaScene13',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "12"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 12); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -491,29 +491,29 @@ CaScene13 = {
   choices:[
    ["Amago la motxilla sota el banc.", 
       function(t){
-       t["sc"] = "13";
+       t["sc"] = 13;
        t["sac"] = "banc";
       cond_dict=[];
 return cond_dict;}],
    ["Penjo la motxilla a un dels claus clavats dels murs de la cabana.", 
       function(t){
-       t["sc"] = "13";
+       t["sc"] = 13;
        t["sac"] = "clou";
       cond_dict=[];
 return cond_dict;}],
    ["Trec el menjar de la motxilla i el penjo d’un dels fils que creua la sala.", 
       function(t){
-       t["sc"] = "13";
+       t["sc"] = 13;
        t["sac"] = "nourriture";
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene14nourrit = {
+scene18 = {
   name: 'CaScene14nourrit',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "13"); };function a2(){ return (vartable["sac"]== "nourriture"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 13); };function a2(){ return (vartable["sac"]== "nourriture"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -525,16 +525,16 @@ CaScene14nourrit = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "14";
+       t["sc"] = 14;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene14clou = {
+scene19 = {
   name: 'CaScene14clou',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "13"); };function a2(){ return (vartable["sac"]== "clou"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 13); };function a2(){ return (vartable["sac"]== "clou"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -553,16 +553,16 @@ CaScene14clou = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "14";
+       t["sc"] = 14;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene14banc = {
+scene20 = {
   name: 'CaScene14banc',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "13"); };function a2(){ return (vartable["sac"]== "banc"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 13); };function a2(){ return (vartable["sac"]== "banc"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -582,16 +582,16 @@ CaScene14banc = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "15";
+       t["sc"] = 15;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene15 = {
+scene21 = {
   name: 'CaScene15',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "14"); };function a2(){ return (vartable["sac"]!= "banc"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
+    function a1(){ return (vartable["sc"]== 14); };function a2(){ return (vartable["sac"]!= "banc"); };function a3(){ return (vartable["lang"]== "ca"); };return (a1() && a2() && a3());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -608,16 +608,16 @@ CaScene15 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "15";
+       t["sc"] = 15;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene16 = {
+scene22 = {
   name: 'CaScene16',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "15"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 15); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -632,16 +632,16 @@ CaScene16 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "16";
+       t["sc"] = 16;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene17 = {
+scene23 = {
   name: 'CaScene17',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "16"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 16); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -654,16 +654,16 @@ CaScene17 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "17";
+       t["sc"] = 17;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene18 = {
+scene24 = {
   name: 'CaScene18',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "17"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 17); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -678,16 +678,16 @@ CaScene18 = {
   choices:[
    ["Endavant", 
       function(t){
-       t["sc"] = "18";
+       t["sc"] = 18;
       cond_dict=[];
 return cond_dict;}],
 ]
 }
 
-CaScene19 = {
+scene25 = {
   name: 'CaScene19',
   conditions:function(){
-    function a1(){ return (vartable["sc"]== "18"); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
+    function a1(){ return (vartable["sc"]== 18); };function a2(){ return (vartable["lang"]== "ca"); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -700,7 +700,7 @@ CaScene19 = {
   choices:[
    ["Tornar al inici", 
       function(t){
-       t["sc"] = "0";
+       t["sc"] = 0;
       cond_dict=[];
 return cond_dict;}],
 ]
@@ -708,29 +708,29 @@ return cond_dict;}],
 
 preload_list = ["images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
 
-storylets.push(CaScene1);
-storylets.push(CaScene2);
-storylets.push(CaScene_croise_marcheurs);
-storylets.push(CaScene_mensonge);
-storylets.push(CaScene_nepasrepondre);
-storylets.push(CaScene_verite);
-storylets.push(CaScene3);
-storylets.push(CaScene3b);
-storylets.push(CaScene4);
-storylets.push(CaScene5);
-storylets.push(CaScene6);
-storylets.push(CaScene7);
-storylets.push(CaScene8);
-storylets.push(CaScene9);
-storylets.push(CaScene10);
-storylets.push(CaScene11);
-storylets.push(CaScene12);
-storylets.push(CaScene13);
-storylets.push(CaScene14nourrit);
-storylets.push(CaScene14clou);
-storylets.push(CaScene14banc);
-storylets.push(CaScene15);
-storylets.push(CaScene16);
-storylets.push(CaScene17);
-storylets.push(CaScene18);
-storylets.push(CaScene19);
+storylets.push(scene0);
+storylets.push(scene1);
+storylets.push(scene2);
+storylets.push(scene3);
+storylets.push(scene4);
+storylets.push(scene5);
+storylets.push(scene6);
+storylets.push(scene7);
+storylets.push(scene8);
+storylets.push(scene9);
+storylets.push(scene10);
+storylets.push(scene11);
+storylets.push(scene12);
+storylets.push(scene13);
+storylets.push(scene14);
+storylets.push(scene15);
+storylets.push(scene16);
+storylets.push(scene17);
+storylets.push(scene18);
+storylets.push(scene19);
+storylets.push(scene20);
+storylets.push(scene21);
+storylets.push(scene22);
+storylets.push(scene23);
+storylets.push(scene24);
+storylets.push(scene25);

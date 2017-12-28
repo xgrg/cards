@@ -1,8 +1,8 @@
-Test2 = {
+scene0 = {
   name: 'Test2',
   audio:"music_bg",
   conditions:function(){
-    function a1(){ return (vartable["lang"]== "fr"); };function a2(){ return (vartable["@action"]== "toto"); };return (a1() && a2());
+    function a1(){ return (vartable["lang"]== fr); };function a2(){ return (vartable["@action"]== toto); };return (a1() && a2());
   },
   storylet:function(choice, instantly){
   if (instantly == undefined) undefined = false;
@@ -18,12 +18,12 @@ console.log('alert');
   choices:[
    ["Test1", 
       function(t){
-       t["lang"] = "ca";
-      cond_dict=[["lang","eq","fr"]];
-return cond_dict;}, function(){function a1(){ return (vartable["lang"]== "fr"); };return (a1());} ],
+       t["lang"] = ca;
+      cond_dict=[["lang", "eq", fr]];
+return cond_dict;}, function(){function a1(){ return (vartable["lang"]== fr); };return (a1());} ],
 ]
 }
 
 preload_list = ["images/image_chat.jpg", "audio/music_bg.mp3"]
 
-storylets.push(Test2);
+storylets.push(scene0);
