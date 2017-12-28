@@ -49,6 +49,6 @@ Youpi !
 lang:eq:"fr"
 sc:eq:0
 
-### Catalan
+### Català
 lang:eq:"ca"
 sc:eq:0

@@ -48,7 +48,7 @@ Encara que les remuntades mecàniques fossin apagades, unes manxes de neu semble
 La pujada es fa sense cap dificultat.
 ## Choices
 ### La pujada dona calor. Trec el meu forro polar.
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 
 @if
 equip:eq:"polaire"
