@@ -1,5 +1,5 @@
 Conditions:
-lang:eq:ca
+lang:eq:"ca"
 
 #####
 # CaScene1
@@ -18,17 +18,17 @@ Desprès de que em posés unes capes més, que fes una ultima verificació de la
 ### Portaré la meva jaqueta tallavent.
 
 sc:eq:1
-equip:eq:coupevent
+equip:eq:"coupevent"
 
 ### Portaré el forro polar, abric i jaqueta tallavent.
 
 sc:eq:1
-equip:eq:polaire
+equip:eq:"polaire"
 
 ### Ho he pensat, i finalment surto amb la samarreta.
 
 sc:eq:1
-equip:eq:tshirt
+equip:eq:"tshirt"
 
 #####
 # CaScene2
@@ -51,16 +51,16 @@ La pujada es fa sense cap dificultat.
 sc:eq:scene_croise_marcheurs
 
 @if
-equip:eq:polaire
+equip:eq:"polaire"
 
 ### Endavant
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 
 #####
 # CaScene_croise_marcheurs
 ## Conditions
 
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 
 ## Text
 Saludo a uns excursionistes que ja estan baixant. Efectivament sembla més una hora per baixar que per pujar.
@@ -70,20 +70,20 @@ Un d’ells, que portava un vestit vermell de socorrista, es dirigeix a mi:
 _\"- Bon dia, on vas ?  Cap al pic de la Dona ?\"_
 ## Choices
 ### Si, puja i baixa (mentida)
-sc:eq:mensonge
+sc:eq:"mensonge"
 
 ### No, cap al refugi del Alemany (veritat)
-sc:eq:verite
+sc:eq:"verite"
 
 ### No respondre i seguir el camí.
-sc:eq:nepasrepondre
+sc:eq:"nepasrepondre"
 
 
 #####
 # CaScene_mensonge
 ## Conditions
 
-sc:eq:mensonge
+sc:eq:"mensonge"
 
 ## Text
 L’home em dirigeix una mirada escèptica i continua la seva baixada.
@@ -98,7 +98,7 @@ sc:eq:2
 # CaScene_nepasrepondre
 ## Conditions
 
-sc:eq:nepasrepondre
+sc:eq:"nepasrepondre"
 
 ## Text
 Segueixo amb la pujada ni sense respondre al home, que no pot impedir una reacció de sorpresa.
@@ -111,7 +111,7 @@ sc:eq:2
 # CaScene_verite
 ## Conditions
 
-sc:eq:verite
+sc:eq:"verite"
 
 ## Text
 _\"- Que tinguis bona ruta.\"_
@@ -143,14 +143,14 @@ sc:eq:3
 
 sc:eq:3
 @if
-equip:eq:tshirt
+equip:eq:"tshirt"
 
 
 #####
 # CaScene3b
 ## Conditions
 
-sc:eq:back-to-vallter
+sc:eq:"back-to-vallter"
 
 ## Text
 Seguretat abans de tot. Baixo cap a Vallter i torno al cotxe fins i tot abans la posta del sol.
@@ -358,17 +358,17 @@ Abans d’això, tinc cura d’arreglar les coses, en previsió de possibles vis
 ### Amago la motxilla sota el banc.
 
 sc:eq:13
-sac:eq:banc
+sac:eq:"banc"
 
 ### Penjo la motxilla a un dels claus clavats dels murs de la cabana.
 
 sc:eq:13
-sac:eq:clou
+sac:eq:"clou"
 
 ### Trec el menjar de la motxilla i el penjo d’un dels fils que creua la sala.
 
 sc:eq:13
-sac:eq:nourriture
+sac:eq:"nourriture"
 
 
 #####
@@ -377,7 +377,7 @@ sac:eq:nourriture
 
 
 sc:eq:13
-sac:eq:nourriture
+sac:eq:"nourriture"
 
 ## Text
 Amb el foc que es va consumint poc a poc, i unes mantes del refugi de sobres, la nit tindrà lloc sense cap problema de fred.
@@ -391,7 +391,7 @@ sc:eq:14
 ## Conditions
 
 sc:eq:13
-sac:eq:clou
+sac:eq:"clou"
 
 ## Text
 En mig de la nit, uns sorollets es posen a molestar el meu son.
@@ -412,7 +412,7 @@ sc:eq:14
 ## Conditions
 
 sc:eq:13
-sac:eq:banc
+sac:eq:"banc"
 
 ## Text
 Al dia següent, el foc esta apagat, fan 4 graus a dintre i neva fora.
@@ -434,7 +434,7 @@ sc:eq:15
 ## Conditions
 
 sc:eq:14
-sac:neq:banc
+sac:neq:"banc"
 
 ## Image
 neige.jpg

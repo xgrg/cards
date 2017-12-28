@@ -2,7 +2,7 @@ Conditions:
 
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| lang       | eq         | fr      |
+| lang       | eq         | "fr"    |
 
 *****
 
@@ -22,30 +22,30 @@ bg2.gif
 > Le temps d’enfiler quelques couches supplémentaires, d’une dernière vérification du sac et d’un rapide casse-croûte et je serai prêt(e) à partir.
 ## Choices
 ### J’enfile mon coupe-vent.
+| variable   | function   | value       |
+|:-----------|:-----------|:------------|
+| equip      | eq         | "coupevent" |
+| sc         | eq         | 1           |
+| dice       | eq         | @dice       |
+### J’enfile polaire, doudoune et coupe-vent.
 | variable   | function   | value     |
 |:-----------|:-----------|:----------|
-| equip      | eq         | coupevent |
+| equip      | eq         | "polaire" |
 | sc         | eq         | 1         |
-| dice       | eq         | @dice     |
-### J’enfile polaire, doudoune et coupe-vent.
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| equip      | eq         | polaire |
-| sc         | eq         | 1       |
 ### Réflexion faite, je pars en t-shirt.
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| equip      | eq         | tshirt  |
-| sc         | eq         | 1       |
+| variable   | function   | value    |
+|:-----------|:-----------|:---------|
+| equip      | eq         | "tshirt" |
+| sc         | eq         | 1        |
 
 ******
 
 # FrScene2
 ## Conditions
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | 1       |
-| equip      | neq        | polaire |
+| variable   | function   | value     |
+|:-----------|:-----------|:----------|
+| sc         | eq         | 1         |
+| equip      | neq        | "polaire" |
 
 ## Image
 vallter2.jpg
@@ -59,13 +59,13 @@ vallter2.jpg
 > La montée s’effectue sans encombres.
 ## Choices
 ### Continuer.
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 ### Le dé a fait plus de 50.
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 @if
 
@@ -73,9 +73,9 @@ vallter2.jpg
 |:-----------|:-----------|--------:|
 | dice       | get        |      50 |
 ### Le dé a fait moins de 50.
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 @if
 
@@ -87,10 +87,10 @@ vallter2.jpg
 
 # FrScene2avecpolaire
 ## Conditions
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | 1       |
-| equip      | eq         | polaire |
+| variable   | function   | value     |
+|:-----------|:-----------|:----------|
+| sc         | eq         | 1         |
+| equip      | eq         | "polaire" |
 
 ## Image
 vallter2.jpg
@@ -104,9 +104,9 @@ vallter2.jpg
 > La montée s’effectue sans encombres mais je transpire rapidement sous la polaire, doudone, etc.
 ## Choices
 ### La montée donne chaud. Je retire ma polaire.
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 ******
 
@@ -123,17 +123,17 @@ vallter2.jpg
 > C'est un test !!
 ## Choices
 ### Continuer.
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 ******
 
 # FrScene_croise_marcheurs
 ## Conditions
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 ## Text
 > Je salue quelques marcheurs en les croisant dans leur descente.. C’est en effet davantage une heure de fin de parcours que de début...
@@ -143,25 +143,25 @@ vallter2.jpg
 > _\"- Bon dia, on vas ?  Cap al pic de la Dona ?\"_
 ## Choices
 ### Si, puja i baixa (mensonge)
+| variable   | function   | value      |
+|:-----------|:-----------|:-----------|
+| sc         | eq         | "mensonge" |
+### No, cap al refugi del Alemany (vérité)
 | variable   | function   | value    |
 |:-----------|:-----------|:---------|
-| sc         | eq         | mensonge |
-### No, cap al refugi del Alemany (vérité)
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | verite  |
+| sc         | eq         | "verite" |
 ### Ne pas répondre et poursuivre sa route.
-| variable   | function   | value         |
-|:-----------|:-----------|:--------------|
-| sc         | eq         | nepasrepondre |
+| variable   | function   | value           |
+|:-----------|:-----------|:----------------|
+| sc         | eq         | "nepasrepondre" |
 
 ******
 
 # FrScene_mensonge
 ## Conditions
-| variable   | function   | value    |
-|:-----------|:-----------|:---------|
-| sc         | eq         | mensonge |
+| variable   | function   | value      |
+|:-----------|:-----------|:-----------|
+| sc         | eq         | "mensonge" |
 
 ## Text
 > L'homme me lance un regard sceptique et poursuit sa descente.
@@ -177,9 +177,9 @@ vallter2.jpg
 
 # FrScene_nepasrepondre
 ## Conditions
-| variable   | function   | value         |
-|:-----------|:-----------|:--------------|
-| sc         | eq         | nepasrepondre |
+| variable   | function   | value           |
+|:-----------|:-----------|:----------------|
+| sc         | eq         | "nepasrepondre" |
 
 ## Text
 > Je poursuis la montée sans adresser un regard à l'homme, qui montre une réaction de surprise.
@@ -193,9 +193,9 @@ vallter2.jpg
 
 # FrScene_verite
 ## Conditions
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | verite  |
+| variable   | function   | value    |
+|:-----------|:-----------|:---------|
+| sc         | eq         | "verite" |
 
 ## Text
 > _\"- Que tinguis bona ruta.\"_
@@ -221,9 +221,9 @@ borne.jpg
 > A l’arrivée à la Porteille de Mantet, une borne indique la frontière avec la France. La montre indique 15 heures.
 ## Choices
 ### Il est tard pour passer au Nord. Je redescends vers Vallter.
-| variable   | function   | value           |
-|:-----------|:-----------|:----------------|
-| sc         | eq         | back-to-vallter |
+| variable   | function   | value             |
+|:-----------|:-----------|:------------------|
+| sc         | eq         | "back-to-vallter" |
 ### Je continue.
 | variable   | function   |   value |
 |:-----------|:-----------|--------:|
@@ -235,17 +235,17 @@ borne.jpg
 
 @if
 
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| equip      | eq         | tshirt  |
+| variable   | function   | value    |
+|:-----------|:-----------|:---------|
+| equip      | eq         | "tshirt" |
 
 ******
 
 # FrScene3b
 ## Conditions
-| variable   | function   | value           |
-|:-----------|:-----------|:----------------|
-| sc         | eq         | back-to-vallter |
+| variable   | function   | value             |
+|:-----------|:-----------|:------------------|
+| sc         | eq         | "back-to-vallter" |
 
 ## Text
 > La sécurité avant tout. Je redescends vers Vallter et suis de retour à la voiture avant même le coucher du soleil.
@@ -481,26 +481,26 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | banc    |
+| sac        | eq         | "banc"  |
 ### J’accroche le sac à l’un des clous plantés aux murs de la cabane
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | clou    |
+| sac        | eq         | "clou"  |
 ### Je retire la nourriture du sac et la suspends à l’un des fils traversant la pièce.
-| variable   | function   | value      |
-|:-----------|:-----------|:-----------|
-| sc         | eq         | 13         |
-| sac        | eq         | nourriture |
+| variable   | function   | value        |
+|:-----------|:-----------|:-------------|
+| sc         | eq         | 13           |
+| sac        | eq         | "nourriture" |
 
 ******
 
 # FrScene14nourrit
 ## Conditions
-| variable   | function   | value      |
-|:-----------|:-----------|:-----------|
-| sc         | eq         | 13         |
-| sac        | eq         | nourriture |
+| variable   | function   | value        |
+|:-----------|:-----------|:-------------|
+| sc         | eq         | 13           |
+| sac        | eq         | "nourriture" |
 
 ## Text
 > Avec le feu se consumant tranquillement, et les quelques couvertures du refuge en supplément, la nuit passera en étant protégé du froid.
@@ -517,7 +517,7 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 14      |
-| sac        | eq         | clou    |
+| sac        | eq         | "clou"  |
 
 ## Text
 > Au milieu de la nuit, de petits bruits perturbent mon sommeil.
@@ -541,7 +541,7 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | banc    |
+| sac        | eq         | "banc"  |
 
 ## Text
 > Le lendemain, le feu est éteint, il fait 4 degrés à l’intérieur et il neige au dehors.
@@ -566,7 +566,7 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 14      |
-| sac        | neq        | banc    |
+| sac        | neq        | "banc"  |
 
 ## Image
 neige.jpg

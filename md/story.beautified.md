@@ -6,13 +6,13 @@ Extensions:story-fr.md,story-ca.md
 ## Conditions
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| @action    | eq         | start   |
+| @action    | eq         | "start" |
 
 ## Choices
 ### Démarrer
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| @action    | eq         | begin   |
+| @action    | eq         | "begin" |
 
 ******
 
@@ -20,7 +20,7 @@ Extensions:story-fr.md,story-ca.md
 ## Conditions
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| @action    | eq         | begin   |
+| @action    | eq         | "begin" |
 
 ## Audio
 bg
@@ -32,7 +32,7 @@ bg
 ### Français
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| lang       | eq         | fr      |
+| lang       | eq         | "fr"    |
 | sc         | eq         | 0       |
 
 @if
@@ -43,7 +43,7 @@ bg
 ### Catalan
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| lang       | eq         | ca      |
+| lang       | eq         | "ca"    |
 | sc         | eq         | 0       |
 
 ******
@@ -52,7 +52,7 @@ bg
 ## Conditions
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| @action    | eq         | begin   |
+| @action    | eq         | "begin" |
 
 ## Audio
 bg
@@ -63,12 +63,12 @@ bg
 ### Français
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| lang       | eq         | fr      |
+| lang       | eq         | "fr"    |
 | sc         | eq         | 0       |
 ### Catalan
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| lang       | eq         | ca      |
+| lang       | eq         | "ca"    |
 | sc         | eq         | 0       |
 
 ******

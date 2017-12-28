@@ -1,14 +1,14 @@
 Extensions:story-fr.md,story-ca.md
 # Début
-## Action
-start
+## Conditions
+@action:eq:"start"
 ## Choices
 ### Démarrer
-@action:begin
+@action:eq:"begin"
 
 # SceneChoixLangues
 ## Conditions
-@action:begin
+@action:eq:"begin"
 
 ## Audio
 bg
@@ -20,19 +20,19 @@ bg
 
 ## Choices
 ### Français
-lang:eq:fr
+lang:eq:"fr"
 sc:eq:0
 @if
 @time:eq:10
 
 ### Catalan
-lang:eq:ca
+lang:eq:"ca"
 sc:eq:0
 
 
 # SceneChoixLangues2
 ## Conditions
-@action:begin
+@action:eq:"begin"
 
 ## Audio
 bg
@@ -43,9 +43,9 @@ Youpi !
 
 ## Choices
 ### Français
-lang:eq:fr
+lang:eq:"fr"
 sc:eq:0
 
 ### Catalan
-lang:eq:ca
+lang:eq:"ca"
 sc:eq:0

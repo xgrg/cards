@@ -1,5 +1,5 @@
 Conditions:
-lang:eq:fr
+lang:eq:"fr"
 
 #####
 # FrScene1
@@ -18,17 +18,17 @@ Les degrés fondent à mesure que s’enchaînent les virages. A l’approche du
 Le temps d’enfiler quelques couches supplémentaires, d’une dernière vérification du sac et d’un rapide casse-croûte et je serai prêt(e) à partir.
 ## Choices
 ### J’enfile mon coupe-vent.
-equip:eq:coupevent
+equip:eq:"coupevent"
 sc:eq:1
 dice:eq:@dice
 
 
 ### J’enfile polaire, doudoune et coupe-vent.
-equip:eq:polaire
+equip:eq:"polaire"
 sc:eq:1
 
 ### Réflexion faite, je pars en t-shirt.
-equip:eq:tshirt
+equip:eq:"tshirt"
 sc:eq:1
 
 
@@ -36,7 +36,7 @@ sc:eq:1
 # FrScene2
 ## Conditions
 sc:eq:1
-equip:neq:polaire
+equip:neq:"polaire"
 
 
 ## Image
@@ -51,13 +51,13 @@ Bien que les télésièges soient à l’arrêt, quelques tâches de neige sembl
 La montée s’effectue sans encombres.
 ## Choices
 ### Continuer.
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 ### Le dé a fait plus de 50.
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 @if
 dice:get:50
 ### Le dé a fait moins de 50.
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 @if
 dice:lt:50
 
@@ -68,7 +68,7 @@ dice:lt:50
 # FrScene2avecpolaire
 ## Conditions
 sc:eq:1
-equip:eq:polaire
+equip:eq:"polaire"
 
 ## Image
 vallter2.jpg
@@ -82,7 +82,7 @@ Bien que les télésièges soient à l’arrêt, quelques tâches de neige sembl
 La montée s’effectue sans encombres mais je transpire rapidement sous la polaire, doudone, etc.
 ## Choices
 ### La montée donne chaud. Je retire ma polaire.
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 
 #####
 # FrScene2random
@@ -96,14 +96,14 @@ vallter2.jpg
 C'est un test !!
 ## Choices
 ### Continuer.
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 
 
 
 #####
 # FrScene_croise_marcheurs
 ## Conditions
-sc:eq:scene_croise_marcheurs
+sc:eq:"scene_croise_marcheurs"
 
 
 
@@ -115,19 +115,19 @@ L’un d’entre eux, vêtu d’un combinaison de secouriste rouge, s’adresse 
 _\"- Bon dia, on vas ?  Cap al pic de la Dona ?\"_
 ## Choices
 ### Si, puja i baixa (mensonge)
-sc:eq:mensonge
+sc:eq:"mensonge"
 
 ### No, cap al refugi del Alemany (vérité)
-sc:eq:verite
+sc:eq:"verite"
 ### Ne pas répondre et poursuivre sa route.
-sc:eq:nepasrepondre
+sc:eq:"nepasrepondre"
 
 
 #####
 # FrScene_mensonge
 ## Conditions
 
-sc:eq:mensonge
+sc:eq:"mensonge"
 
 
 ## Text
@@ -143,7 +143,7 @@ sc:eq:2
 # FrScene_nepasrepondre
 ## Conditions
 
-sc:eq:nepasrepondre
+sc:eq:"nepasrepondre"
 
 ## Text
 Je poursuis la montée sans adresser un regard à l'homme, qui montre une réaction de surprise.
@@ -156,7 +156,7 @@ sc:eq:2
 # FrScene_verite
 ## Conditions
 
-sc:eq:verite
+sc:eq:"verite"
 
 ## Text
 _\"- Que tinguis bona ruta.\"_
@@ -179,7 +179,7 @@ borne.jpg
 A l’arrivée à la Porteille de Mantet, une borne indique la frontière avec la France. La montre indique 15 heures.
 ## Choices
 ### Il est tard pour passer au Nord. Je redescends vers Vallter.
-sc:eq:back-to-vallter
+sc:eq:"back-to-vallter"
 
 ### Je continue.
 sc:eq:3
@@ -187,13 +187,13 @@ sc:eq:3
 ### Le vent souffle au col. J'enfile mon coupe-vent pour poursuivre la route.
 sc:eq:3
 @if
-equip:eq:tshirt
+equip:eq:"tshirt"
 
 #####
 # FrScene3b
 ## Conditions
 
-sc:eq:back-to-vallter
+sc:eq:"back-to-vallter"
 
 
 ## Text
@@ -397,22 +397,22 @@ Avant cela, je prends soin de ranger les affaires, en prévision d’éventuels 
 ## Choices
 ### Je cache le sac-à-dos sous un banc.
 sc:eq:13
-sac:eq:banc
+sac:eq:"banc"
 
 ### J’accroche le sac à l’un des clous plantés aux murs de la cabane
 sc:eq:13
-sac:eq:clou
+sac:eq:"clou"
 
 ### Je retire la nourriture du sac et la suspends à l’un des fils traversant la pièce.
 sc:eq:13
-sac:eq:nourriture
+sac:eq:"nourriture"
 
 #####
 # FrScene14nourrit
 ## Conditions
 
 sc:eq:13
-sac:eq:nourriture
+sac:eq:"nourriture"
 
 ## Text
 Avec le feu se consumant tranquillement, et les quelques couvertures du refuge en supplément, la nuit passera en étant protégé du froid.
@@ -426,7 +426,7 @@ sc:eq:14
 ## Conditions
 
 sc:eq:14
-sac:eq:clou
+sac:eq:"clou"
 
 ## Text
 Au milieu de la nuit, de petits bruits perturbent mon sommeil.
@@ -447,7 +447,7 @@ sc:14
 ## Conditions
 
 sc:eq:13
-sac:eq:banc
+sac:eq:"banc"
 
 ## Text
 Le lendemain, le feu est éteint, il fait 4 degrés à l’intérieur et il neige au dehors.
@@ -469,7 +469,7 @@ sc:eq:15
 ## Conditions
 
 sc:eq:14
-sac:neq:banc
+sac:neq:"banc"
 
 ## Image
 neige.jpg

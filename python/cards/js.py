@@ -9,8 +9,8 @@ def gen_conditions_code(conditions):
 
     vardict = {'@dice': 'Math.floor(Math.random() * 100)'}
 
-    fdict = {'eq': '== "%s"',
-             'neq' : '!= "%s"',
+    fdict = {'eq': '== %s',
+             'neq' : '!= %s',
              'get': '>= %s',
              'gt': '> %s',
              'let': '<= %s',
@@ -30,15 +30,18 @@ def gen_conditions_code(conditions):
 
 def gen_choice_effect_code(conditions, cond_dict=[]):
     def cond_to_str(d):
-        res = '[%s]'%(','.join(['[%s]'%','.join(['"%s"'%each for each in e]) for e in d]))
+        res = '[%s]'%(','.join(['[%s]'%'"%s", "%s", %s'%(e[0], e[1], e[2]) for e in d]))
         return res
 
     valdict = {'@dice': 'Math.floor(Math.random() * 100)'}
 
     f = []
-    fdict = {'eq': '='}
+
     for var, func, val in conditions:
-        f.append('t["%s"] %s %s;'%(var, fdict[func], valdict.get(val, '"%s"'%val)))
+        fdict = {'eq': '',
+                 '-': 't["%s"] - '%var,
+                 '+': 't["%s"] + '%var,}
+        f.append('t["%s"] = %s%s;'%(var, fdict[func], valdict.get(val, '%s'%val)))
     if len(f) == 0: return 'function(t){}';
     res = 'function(t){\n       %s\n      cond_dict=%s;\nreturn cond_dict;}'\
         %('\n       '.join(f), cond_to_str(cond_dict))
@@ -99,7 +102,7 @@ def json_to_javascript(j): #, preamble={}):
     #    log.info('* No preamble provided.')
 
     js = ''
-    for sc_name, sc in j.items():
+    for i, (sc_name, sc) in enumerate(j.items()):
 
         # Start with conditions (adds conditions from preamble if any)
         conditions = sc['conditions'] \
@@ -135,13 +138,13 @@ def json_to_javascript(j): #, preamble={}):
             '  storylet:function(choice, instantly){\n'\
             '  if (instantly == undefined) undefined = false;\n   %s\n  },\n%s'\
             %(sc_name, audio, qual_code, storylet_code%(image, extra_code), choices_code)
-        scene_js = '%s = {\n%s\n}'%(sc_name, sc_code)
+        scene_js = 'scene%s = {\n%s\n}'%(i, sc_code)
         js = js + scene_js + '\n\n'
 
     # Ends with listing all the scenes in the `ready` function
     pushlist = ''
-    for sc_name, _ in j.items():
-        pushlist = pushlist + 'storylets.push(%s);\n'%sc_name
+    for i, (sc_name, _) in enumerate(j.items()):
+        pushlist = pushlist + 'storylets.push(scene%s);\n'%i
 
     # Adds a list with all iamges/audio resources (preload)
     preload_list = gen_preload_code(j)

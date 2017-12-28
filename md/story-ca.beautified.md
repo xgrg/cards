@@ -2,7 +2,7 @@ Conditions:
 
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
-| lang       | eq         | ca      |
+| lang       | eq         | "ca"    |
 
 *****
 
@@ -22,20 +22,20 @@ vallter.jpg
 > Desprès de que em posés unes capes més, que fes una ultima verificació de la motxilla i un ràpid entrepà, i estaré llest per sortir.
 ## Choices
 ### Portaré la meva jaqueta tallavent.
+| variable   | function   | value       |
+|:-----------|:-----------|:------------|
+| sc         | eq         | 1           |
+| equip      | eq         | "coupevent" |
+### Portaré el forro polar, abric i jaqueta tallavent.
 | variable   | function   | value     |
 |:-----------|:-----------|:----------|
 | sc         | eq         | 1         |
-| equip      | eq         | coupevent |
-### Portaré el forro polar, abric i jaqueta tallavent.
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | 1       |
-| equip      | eq         | polaire |
+| equip      | eq         | "polaire" |
 ### Ho he pensat, i finalment surto amb la samarreta.
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | 1       |
-| equip      | eq         | tshirt  |
+| variable   | function   | value    |
+|:-----------|:-----------|:---------|
+| sc         | eq         | 1        |
+| equip      | eq         | "tshirt" |
 
 ******
 
@@ -63,21 +63,21 @@ vallter2.jpg
 
 @if
 
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| equip      | eq         | polaire |
+| variable   | function   | value     |
+|:-----------|:-----------|:----------|
+| equip      | eq         | "polaire" |
 ### Endavant
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 ******
 
 # CaScene_croise_marcheurs
 ## Conditions
-| variable   | function   | value                  |
-|:-----------|:-----------|:-----------------------|
-| sc         | eq         | scene_croise_marcheurs |
+| variable   | function   | value                    |
+|:-----------|:-----------|:-------------------------|
+| sc         | eq         | "scene_croise_marcheurs" |
 
 ## Text
 > Saludo a uns excursionistes que ja estan baixant. Efectivament sembla més una hora per baixar que per pujar.
@@ -87,25 +87,25 @@ vallter2.jpg
 > _\"- Bon dia, on vas ?  Cap al pic de la Dona ?\"_
 ## Choices
 ### Si, puja i baixa (mentida)
+| variable   | function   | value      |
+|:-----------|:-----------|:-----------|
+| sc         | eq         | "mensonge" |
+### No, cap al refugi del Alemany (veritat)
 | variable   | function   | value    |
 |:-----------|:-----------|:---------|
-| sc         | eq         | mensonge |
-### No, cap al refugi del Alemany (veritat)
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | verite  |
+| sc         | eq         | "verite" |
 ### No respondre i seguir el camí.
-| variable   | function   | value         |
-|:-----------|:-----------|:--------------|
-| sc         | eq         | nepasrepondre |
+| variable   | function   | value           |
+|:-----------|:-----------|:----------------|
+| sc         | eq         | "nepasrepondre" |
 
 ******
 
 # CaScene_mensonge
 ## Conditions
-| variable   | function   | value    |
-|:-----------|:-----------|:---------|
-| sc         | eq         | mensonge |
+| variable   | function   | value      |
+|:-----------|:-----------|:-----------|
+| sc         | eq         | "mensonge" |
 
 ## Text
 > L’home em dirigeix una mirada escèptica i continua la seva baixada.
@@ -121,9 +121,9 @@ vallter2.jpg
 
 # CaScene_nepasrepondre
 ## Conditions
-| variable   | function   | value         |
-|:-----------|:-----------|:--------------|
-| sc         | eq         | nepasrepondre |
+| variable   | function   | value           |
+|:-----------|:-----------|:----------------|
+| sc         | eq         | "nepasrepondre" |
 
 ## Text
 > Segueixo amb la pujada ni sense respondre al home, que no pot impedir una reacció de sorpresa.
@@ -137,9 +137,9 @@ vallter2.jpg
 
 # CaScene_verite
 ## Conditions
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| sc         | eq         | verite  |
+| variable   | function   | value    |
+|:-----------|:-----------|:---------|
+| sc         | eq         | "verite" |
 
 ## Text
 > _\"- Que tinguis bona ruta.\"_
@@ -179,17 +179,17 @@ borne.jpg
 
 @if
 
-| variable   | function   | value   |
-|:-----------|:-----------|:--------|
-| equip      | eq         | tshirt  |
+| variable   | function   | value    |
+|:-----------|:-----------|:---------|
+| equip      | eq         | "tshirt" |
 
 ******
 
 # CaScene3b
 ## Conditions
-| variable   | function   | value           |
-|:-----------|:-----------|:----------------|
-| sc         | eq         | back-to-vallter |
+| variable   | function   | value             |
+|:-----------|:-----------|:------------------|
+| sc         | eq         | "back-to-vallter" |
 
 ## Text
 > Seguretat abans de tot. Baixo cap a Vallter i torno al cotxe fins i tot abans la posta del sol.
@@ -425,26 +425,26 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | banc    |
+| sac        | eq         | "banc"  |
 ### Penjo la motxilla a un dels claus clavats dels murs de la cabana.
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | clou    |
+| sac        | eq         | "clou"  |
 ### Trec el menjar de la motxilla i el penjo d’un dels fils que creua la sala.
-| variable   | function   | value      |
-|:-----------|:-----------|:-----------|
-| sc         | eq         | 13         |
-| sac        | eq         | nourriture |
+| variable   | function   | value        |
+|:-----------|:-----------|:-------------|
+| sc         | eq         | 13           |
+| sac        | eq         | "nourriture" |
 
 ******
 
 # CaScene14nourrit
 ## Conditions
-| variable   | function   | value      |
-|:-----------|:-----------|:-----------|
-| sc         | eq         | 13         |
-| sac        | eq         | nourriture |
+| variable   | function   | value        |
+|:-----------|:-----------|:-------------|
+| sc         | eq         | 13           |
+| sac        | eq         | "nourriture" |
 
 ## Text
 > Amb el foc que es va consumint poc a poc, i unes mantes del refugi de sobres, la nit tindrà lloc sense cap problema de fred.
@@ -461,7 +461,7 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | clou    |
+| sac        | eq         | "clou"  |
 
 ## Text
 > En mig de la nit, uns sorollets es posen a molestar el meu son.
@@ -485,7 +485,7 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 13      |
-| sac        | eq         | banc    |
+| sac        | eq         | "banc"  |
 
 ## Text
 > Al dia següent, el foc esta apagat, fan 4 graus a dintre i neva fora.
@@ -510,7 +510,7 @@ tisane.jpg
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | sc         | eq         | 14      |
-| sac        | neq        | banc    |
+| sac        | neq        | "banc"  |
 
 ## Image
 neige.jpg
