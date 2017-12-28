@@ -58,6 +58,7 @@ function dict_to_text(cond_dict, is_satisfied){
 }
 
 function is_time_in_choice(dict){
+  if (dict === undefined) return -1;
   var res = [];
   for (var i=0; i< dict.length; i++){
     res.push(dict[i][0]);
@@ -99,7 +100,7 @@ function addLink(text, choice_effect_function, id, cond_function){
 
 
   condition = ''
-  if (cond_dict.length != 0) {
+  if (cond_dict != undefined && cond_dict.length != 0) {
     condition = dict_to_text(cond_dict, is_satisfied)
   }
   b64 = unescape(encodeURIComponent(Base64.encode(JSON.stringify(newtable))))
