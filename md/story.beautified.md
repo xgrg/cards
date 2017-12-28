@@ -1,4 +1,4 @@
-Extensions:story-fr.md,story-ca.md
+Extensions:story-fr.md,story-ca.md,menton.md
 
 *****
 
@@ -13,6 +13,11 @@ Extensions:story-fr.md,story-ca.md
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
 | @action    | eq         | "begin" |
+### Rendre visite à Antoine
+| variable   | function   | value            |
+|:-----------|:-----------|:-----------------|
+| imprevus   | eq         | 91               |
+| @action    | eq         | "visite-antoine" |
 
 ******
 
