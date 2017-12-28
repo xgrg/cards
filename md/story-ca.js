@@ -59,7 +59,7 @@ scene1 = {
   choices:[
    ["La pujada dona calor. Trec el meu forro polar.", 
       function(t){
-       t["sc"] = scene_croise_marcheurs;
+       t["sc"] = "scene_croise_marcheurs";
       cond_dict=[["equip", "eq", "polaire"]];
 return cond_dict;}, function(){function a1(){ return (vartable["equip"]== "polaire"); };return (a1());} ],
    ["Endavant", 
