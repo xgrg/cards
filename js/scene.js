@@ -218,7 +218,7 @@ function loadScene(scene, instantly){
   if (scene['audio'] != undefined && audio != scene['audio']){
     // load audio
     audio = scene['audio'];
-    fn = 'audio/' + scene['audio'] + '.mp3';
+    fn = 'audio/' + scene['audio'];
     $('audio').attr('src', fn);
     console.log($('audio')[0]);
     $('audio').trigger('play');

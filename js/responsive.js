@@ -31,7 +31,8 @@ function set_bodybox(){
 function preload(callback){
     html = 'loading...'
     $('#bodybox').html(html);
-    var array = []; //, 'media/bg.mp3']
+    var array = preload_list; //, 'media/bg.mp3']
+    console.log(array);
     $(array).each(function(i){   // Note the argument
         html = html + array[i] + ' ';
         console.log(array[i]);

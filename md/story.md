@@ -14,7 +14,7 @@ imprevus:eq:91
 @action:eq:"begin"
 
 ## Audio
-bg
+bg.mp3
 ## Text
 
 > Choisissez une langue.
@@ -38,7 +38,7 @@ sc:eq:0
 @action:eq:"begin"
 
 ## Audio
-bg
+bg.mp3
 ## Text
 
 Autre texte !!!

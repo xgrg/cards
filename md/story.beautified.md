@@ -28,7 +28,7 @@ Extensions:story-fr.md,story-ca.md,menton.md
 | @action    | eq         | "begin" |
 
 ## Audio
-bg
+bg.mp3
 ## Text
 > Choisissez une langue.
 > 
@@ -60,7 +60,7 @@ bg
 | @action    | eq         | "begin" |
 
 ## Audio
-bg
+bg.mp3
 ## Text
 > Autre texte !!!
 > Youpi !
