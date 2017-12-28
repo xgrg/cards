@@ -79,12 +79,15 @@ function config_bodybox(){
     $("#orientation").text(orientation + ' ' + w + ' / ' + h)
 
     if (orientation == 'horizontal'){ // DESKTOP
-        $('#bodybox').css({'width': w})
+        $('#bodybox').css({'width': w, 'padding-top':'20px'})
+        $('#availbox').css({'margin-top':'20px'})
+
         $('body').css({'font-size':'20px',
                        'width':w,
                        'padding':'20px'})
         $('#textbox').css({'padding': '20px',
-                           'height': h * 0.6,
+                            'margin-bottom':'20px',
+                           'height': h * 0.6 - 20,
                            'width': w * .94})
         $('#imagebox').css({'width': w * .98,
                             'height': h * 0.4})
