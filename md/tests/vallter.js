@@ -1464,7 +1464,7 @@ return cond_dict;}],
 ]
 }
 
-preload_list = ["audio/bg.mp3", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg", "images/vallter.jpg.jpg", "images/vallter2.jpg.jpg", "images/borne.jpg.jpg", "images/vallee.jpg.jpg", "images/bois.jpg.jpg", "images/berger.jpg.jpg", "images/berger2.jpg.jpg", "images/alemany.jpg.jpg", "images/interieur.jpg.jpg", "images/feu.jpg.jpg", "images/tisane.jpg.jpg", "images/neige.jpg.jpg", "images/presque-mantet.jpg.jpg", "images/vue-mantet.jpg.jpg", "images/panneau.jpg.jpg", "images/mantet.jpg.jpg"]
+preload_list = ["audio/bg", "images/vallter.jpg", "images/vallter2.jpg", "images/borne.jpg", "images/vallee.jpg", "images/bois.jpg", "images/berger.jpg", "images/berger2.jpg", "images/alemany.jpg", "images/interieur.jpg", "images/feu.jpg", "images/tisane.jpg", "images/neige.jpg", "images/presque-mantet.jpg", "images/vue-mantet.jpg", "images/panneau.jpg", "images/mantet.jpg", "images/vallter.jpg", "images/vallter2.jpg", "images/borne.jpg", "images/vallee.jpg", "images/bois.jpg", "images/berger.jpg", "images/berger2.jpg", "images/alemany.jpg", "images/interieur.jpg", "images/feu.jpg", "images/tisane.jpg", "images/neige.jpg", "images/presque-mantet.jpg", "images/vue-mantet.jpg", "images/panneau.jpg", "images/mantet.jpg"]
 
 storylets.push(scene0);
 storylets.push(scene1);

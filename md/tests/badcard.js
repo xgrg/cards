@@ -24,6 +24,6 @@ return cond_dict;}, function(){function a1(){ return (vartable["lang"]== fr); };
 ]
 }
 
-preload_list = ["images/image_chat.jpg", "audio/music_bg.mp3"]
+preload_list = ["images/image_chat", "audio/music_bg"]
 
 storylets.push(scene0);

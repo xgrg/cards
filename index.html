@@ -20,6 +20,7 @@
   <script type="text/javascript">
 
     var vartable = {'@action':'start'};
+    var preload_list = [];
     var cards_to_play = [];
     var storylets = [];
     var scenefile = '';
@@ -50,11 +51,11 @@
       console.log(d)
       vartable = JSON.parse(d);
     }
-    if (f===undefined){ f = 'story'}
+    if (f===undefined) f = 'story';
     scenefile = f;
-    preload(function(){
-       loadScript('md/'+f+'.js', run_machine)
-    });
+    loadScript('md/' + f + '.js',
+      function(){preload(run_machine)})
+
   });
   </script>
 

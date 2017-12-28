@@ -72,7 +72,7 @@ scene2 = {
 ]
 }
 
-preload_list = ["images/bg3.png.jpg"]
+preload_list = ["images/bg3.png"]
 
 storylets.push(scene0);
 storylets.push(scene1);
