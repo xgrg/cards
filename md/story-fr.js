@@ -20,6 +20,7 @@ FrScene1 = {
       function(t){
        t["equip"] = "coupevent";
        t["sc"] = "1";
+       t["dice"] = Math.floor(Math.random() * 100);
       cond_dict=[];
 return cond_dict;}],
    ["J’enfile polaire, doudoune et coupe-vent.", 
@@ -62,6 +63,16 @@ FrScene2 = {
        t["sc"] = "scene_croise_marcheurs";
       cond_dict=[];
 return cond_dict;}],
+   ["Le dé a fait plus de 50.", 
+      function(t){
+       t["sc"] = "scene_croise_marcheurs";
+      cond_dict=[["dice","get","50"]];
+return cond_dict;}, function(){function a1(){ return (vartable["dice"]>= 50); };return (a1());} ],
+   ["Le dé a fait moins de 50.", 
+      function(t){
+       t["sc"] = "scene_croise_marcheurs";
+      cond_dict=[["dice","lt","50"]];
+return cond_dict;}, function(){function a1(){ return (vartable["dice"]< 50); };return (a1());} ],
 ]
 }
 
