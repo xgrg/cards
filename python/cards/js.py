@@ -12,7 +12,9 @@ def gen_conditions_code(conditions):
     fdict = {'eq': '== "%s"',
              'neq' : '!= "%s"',
              'get': '>= %s',
-             'gt': '> %s'}
+             'gt': '> %s',
+             'let': '<= %s',
+             'lt': '< %s'}
 
     for var, func, val in conditions:
         if var == '@time': continue
@@ -31,10 +33,12 @@ def gen_choice_effect_code(conditions, cond_dict=[]):
         res = '[%s]'%(','.join(['[%s]'%','.join(['"%s"'%each for each in e]) for e in d]))
         return res
 
+    valdict = {'@dice': 'Math.floor(Math.random() * 100)'}
+
     f = []
     fdict = {'eq': '='}
     for var, func, val in conditions:
-        f.append('t["%s"] %s "%s";'%(var, fdict[func], val))
+        f.append('t["%s"] %s %s;'%(var, fdict[func], valdict.get(val, '"%s"'%val)))
     if len(f) == 0: return 'function(t){}';
     res = 'function(t){\n       %s\n      cond_dict=%s;\nreturn cond_dict;}'\
         %('\n       '.join(f), cond_to_str(cond_dict))

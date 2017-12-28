@@ -26,6 +26,7 @@ bg2.gif
 |:-----------|:-----------|:----------|
 | equip      | eq         | coupevent |
 | sc         | eq         | 1         |
+| dice       | eq         | @dice     |
 ### J’enfile polaire, doudoune et coupe-vent.
 | variable   | function   | value   |
 |:-----------|:-----------|:--------|
@@ -61,6 +62,26 @@ vallter2.jpg
 | variable   | function   | value                  |
 |:-----------|:-----------|:-----------------------|
 | sc         | eq         | scene_croise_marcheurs |
+### Le dé a fait plus de 50.
+| variable   | function   | value                  |
+|:-----------|:-----------|:-----------------------|
+| sc         | eq         | scene_croise_marcheurs |
+
+@if
+
+| variable   | function   |   value |
+|:-----------|:-----------|--------:|
+| dice       | get        |      50 |
+### Le dé a fait moins de 50.
+| variable   | function   | value                  |
+|:-----------|:-----------|:-----------------------|
+| sc         | eq         | scene_croise_marcheurs |
+
+@if
+
+| variable   | function   |   value |
+|:-----------|:-----------|--------:|
+| dice       | lt         |      50 |
 
 ******
 

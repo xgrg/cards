@@ -41,7 +41,11 @@ function dict_to_text(cond_dict, is_satisfied){
       res = '<div><b>You see this for having </b>'
     else
       res = '<div><b>You need </b>'
-    dict = {eq: 'equal to'}
+    dict = {eq: 'equal to',
+            get: 'higher or equal than',
+            let: 'lower or equal than',
+            gt: 'higher than',
+            lt: 'lower than'}
     for (var i = 0 ; i < cond_dict.length ; i++){
       res = res + '<i>' + cond_dict[i][0] + '</i>';
       res = res + ' <b>' + dict[cond_dict[i][1]] + '</b> ';

@@ -20,6 +20,7 @@ Le temps d’enfiler quelques couches supplémentaires, d’une dernière vérif
 ### J’enfile mon coupe-vent.
 equip:eq:coupevent
 sc:eq:1
+dice:eq:@dice
 
 
 ### J’enfile polaire, doudoune et coupe-vent.
@@ -51,6 +52,14 @@ La montée s’effectue sans encombres.
 ## Choices
 ### Continuer.
 sc:eq:scene_croise_marcheurs
+### Le dé a fait plus de 50.
+sc:eq:scene_croise_marcheurs
+@if
+dice:get:50
+### Le dé a fait moins de 50.
+sc:eq:scene_croise_marcheurs
+@if
+dice:lt:50
 
 
 
