@@ -84,7 +84,8 @@ function config_bodybox(){
 
         $('body').css({'font-size':'20px',
                        'width':w,
-                       'padding':'20px'})
+                       'padding':'20px',
+                       'margin':'0 auto'})
         $('#textbox').css({'padding': '20px',
                             'margin-bottom':'20px',
                            'height': h * 0.6 - 20,
