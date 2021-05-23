@@ -1,5 +1,6 @@
 import logging as log
 
+
 def gen_conditions_code(conditions):
     ''' From a JSON dict generates JS code for Conditions.
     `conditions` is a list of 2-uples built from dictionary/@function and
@@ -10,27 +11,29 @@ def gen_conditions_code(conditions):
     vardict = {'@dice': 'Math.floor(Math.random() * 100)'}
 
     fdict = {'eq': '== %s',
-             'neq' : '!= %s',
+             'neq': '!= %s',
              'get': '>= %s',
              'gt': '> %s',
              'let': '<= %s',
              'lt': '< %s'}
 
     for var, func, val in conditions:
-        if var == '@time': continue
-        f.append('a%s'%(len(f)+1))
-        res =  res + 'function %s(){ return (%s%s); };'\
-            %(f[-1], vardict.get(var, 'vartable["%s"]'%var), fdict[func]%val)
+        if var == '@time':
+            continue
+        f.append('a%s' % (len(f)+1))
+        res = res + 'function %s(){ return (%s%s); };'\
+            % (f[-1], vardict.get(var, 'vartable["%s"]' % var), fdict[func] % val)
 
-    #res = '\n%s'%res
-    c = ' && '.join(['%s()'%e for e in f]) if len(f) != 0 else 'true'
-    res = res + 'return (%s);'%c
+    # res = '\n%s'%res
+    c = ' && '.join(['%s()' % e for e in f]) if len(f) != 0 else 'true'
+    res = res + 'return (%s);' % c
 
     return res
 
+
 def gen_choice_effect_code(conditions, cond_dict=[]):
     def cond_to_str(d):
-        res = '[%s]'%(','.join(['[%s]'%'"%s", "%s", %s'%(e[0], e[1], e[2]) for e in d]))
+        res = '[%s]' % (','.join(['[%s]' % '"%s", "%s", %s' % (e[0], e[1], e[2]) for e in d]))
         return res
 
     valdict = {'@dice': 'Math.floor(Math.random() * 100)'}
@@ -39,34 +42,34 @@ def gen_choice_effect_code(conditions, cond_dict=[]):
 
     for var, func, val in conditions:
         fdict = {'eq': '',
-                 '-': 't["%s"] - '%var,
-                 '+': 't["%s"] + '%var,}
-        f.append('t["%s"] = %s%s;'%(var, fdict[func], valdict.get(val, '%s'%val)))
-    if len(f) == 0: return 'function(t){}';
+                 '-': 't["%s"] - ' % var,
+                 '+': 't["%s"] + ' % var}
+        f.append('t["%s"] = %s%s;' % (var, fdict[func], valdict.get(val, '%s' % val)))
+    if len(f) == 0:
+        return 'function(t){}'
     res = 'function(t){\n       %s\n      cond_dict=%s;\nreturn cond_dict;}'\
-        %('\n       '.join(f), cond_to_str(cond_dict))
+          % ('\n       '.join(f), cond_to_str(cond_dict))
     return res
 
 
 def gen_choice(code):
     ''' From a JSON dict generates JS code for Choices'''
-    import json
-    from preamble import find_if
+    from .preamble import find_if
     res = ''
     for label, option in code.items():
         # label is the text of the choice, option is the assigned code
         if_func = ''
         if_bit = find_if(option)
         cond_dict = []
-        if not if_bit is None:
+        if if_bit is not None:
             cond_dict = if_bit[1]
-            if_func = ', ' + 'function(){%s} '%gen_conditions_code(if_bit[1])
+            if_func = ', ' + 'function(){%s} ' % gen_conditions_code(if_bit[1])
             option.pop(if_bit[0])
 
         res = res + '   ["%s", \n      %s%s],\n'\
-            %(label, gen_choice_effect_code(option, cond_dict), if_func)
+                    % (label, gen_choice_effect_code(option, cond_dict), if_func)
 
-    return '  choices:[\n%s]'%res
+    return '  choices:[\n%s]' % res
 
 
 def gen_storylet_code(code):
@@ -78,28 +81,30 @@ def gen_storylet_code(code):
         seq = ''
         for each in code.split('\n'):
             each = markdown.markdown(each)
-            eachcode = '{addDialog("%s", "fadeIn")}, 1000'%each
-            seq = seq + '    [function()%s],\n'%(eachcode)
+            eachcode = '{addDialog("%s", "fadeIn")}, 1000' % each
+            seq = seq + '    [function()%s],\n' % (eachcode)
         return seq
 
     storylet_code = 'playSequence([\n%s%s%s    [choice, 0]],\n    0, instantly)'\
-        %("%s", gen_playsequence(code), "%s")
+                    % ("%s", gen_playsequence(code), "%s")
     return storylet_code
+
 
 def gen_preload_code(j):
     res = []
     for sc_name, sc in j.items():
         if 'image' in sc.keys():
-            res.append('images/%s'%sc['image'])
+            res.append('images/%s' % sc['image'])
         if 'audio' in sc.keys():
-            res.append('audio/%s'%sc['audio'])
+            res.append('audio/%s' % sc['audio'])
 
-    code = 'preload_list = [%s]'%', '.join(['"%s"'%e for e in res])
+    code = 'preload_list = [%s]' % ', '.join(['"%s"' % e for e in res])
     return code
 
-def json_to_javascript(j): #, preamble={}):
-    #if preamble == {}:
-    #    log.info('* No preamble provided.')
+
+def json_to_javascript(j):  # , preamble={}):
+    # if preamble == {}:
+    #     log.info('* No preamble provided.')
 
     js = ''
     for i, (sc_name, sc) in enumerate(j.items()):
@@ -107,25 +112,25 @@ def json_to_javascript(j): #, preamble={}):
         # Start with conditions (adds conditions from preamble if any)
         conditions = sc['conditions'] \
             if 'conditions' in sc.keys() else []
-        #preamble_cond = preamble['conditions'] \
-        #    if 'conditions' in preamble.keys() else []
+        # preamble_cond = preamble['conditions'] \
+        #     if 'conditions' in preamble.keys() else []
 
-        log.info('%s - %s conditions'%(sc_name, len(conditions)))
-        #if len(preamble_cond) != 0:
-        #    log.info('%s preamble conditions'%len(preamble_cond))
+        log.info('%s - %s conditions' % (sc_name, len(conditions)))
+        # if len(preamble_cond) != 0:
+        #     log.info('%s preamble conditions'%len(preamble_cond))
 
-        #conditions.extend(preamble_cond)
+        # conditions.extend(preamble_cond)
         qual_code = gen_conditions_code(conditions)
 
         # Generate the sequence for text, the image
         storylet_code = gen_storylet_code(sc['text']) \
             if 'text' in sc.keys() else 'playSequence([%s%s    [choice, 0]],\n'\
             ' 0, instantly)'
-        image = '[function(){displayImage("%s")}, 1000],\n'%sc['image'] \
+        image = '[function(){displayImage("%s")}, 1000],\n' % sc['image'] \
             if 'image' in sc.keys() else ''
-        extra_code = '     ,[%s, 0],\n'%sc['code'] \
+        extra_code = '     ,[%s, 0],\n' % sc['code'] \
             if 'code' in sc.keys() else ''
-        audio = '  audio:"%s",\n'%sc['audio'] \
+        audio = '  audio:"%s",\n' % sc['audio'] \
             if 'audio' in sc.keys() else ''
 
         # Works with Choices
@@ -137,14 +142,14 @@ def json_to_javascript(j): #, preamble={}):
             '  conditions:function(){\n    %s\n  },\n'\
             '  storylet:function(choice, instantly){\n'\
             '  if (instantly == undefined) undefined = false;\n   %s\n  },\n%s'\
-            %(sc_name, audio, qual_code, storylet_code%(image, extra_code), choices_code)
+            % (sc_name, audio, qual_code, storylet_code % (image, extra_code), choices_code)
         scene_js = 'scene%s = {\n%s\n}'%(i, sc_code)
         js = js + scene_js + '\n\n'
 
     # Ends with listing all the scenes in the `ready` function
     pushlist = ''
     for i, (sc_name, _) in enumerate(j.items()):
-        pushlist = pushlist + 'storylets.push(scene%s);\n'%i
+        pushlist = pushlist + 'storylets.push(scene%s);\n' % i
 
     # Adds a list with all iamges/audio resources (preload)
     preload_list = gen_preload_code(j)
