@@ -1,0 +1,796 @@
+{
+  "CaScene1": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "0"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "vallter.jpg",
+    "text": "_Dos quarts de un, carretera de Vallter, Pirineus Catalans_\n\nEls graus devallen a mesura que es segueixin les corbes. A prop del parquing casi buit de la estació de Vallter 2000, el termometre indica 4 petits graus.\n\nDesprès de que em posés unes capes més, que fes una ultima verificació de la motxilla i un ràpid entrepà, i estaré llest per sortir.",
+    "choices": {
+      "Portaré la meva jaqueta tallavent.": [
+        [
+          "sc",
+          "eq",
+          "1"
+        ],
+        [
+          "equip",
+          "eq",
+          "\"coupevent\""
+        ]
+      ],
+      "Portaré el forro polar, abric i jaqueta tallavent.": [
+        [
+          "sc",
+          "eq",
+          "1"
+        ],
+        [
+          "equip",
+          "eq",
+          "\"polaire\""
+        ]
+      ],
+      "Ho he pensat, i finalment surto amb la samarreta.": [
+        [
+          "sc",
+          "eq",
+          "1"
+        ],
+        [
+          "equip",
+          "eq",
+          "\"tshirt\""
+        ]
+      ]
+    }
+  },
+  "CaScene2": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "1"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "vallter2.jpg",
+    "text": "_Son les dues de la tarda, hora de la sortida de Vallter._\n\nEl camí comença amb una pujada seguint el GR10.\nL'estació s’allunya poc a poc darrere.\n\nEncara que les remuntades mecàniques fossin apagades, unes manxes de neu semblen avisar que la temporada de esqui s’està apropant.\nLa pujada es fa sense cap dificultat.",
+    "choices": {
+      "La pujada dona calor. Trec el meu forro polar.": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ],
+        [
+          "@if",
+          [
+            [
+              "equip",
+              "eq",
+              "\"polaire\""
+            ]
+          ]
+        ]
+      ],
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ]
+      ]
+    }
+  },
+  "CaScene_croise_marcheurs": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"scene_croise_marcheurs\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "Saludo a uns excursionistes que ja estan baixant. Efectivament sembla més una hora per baixar que per pujar.\n\nUn d’ells, que portava un vestit vermell de socorrista, es dirigeix a mi:\n\n_\\\"- Bon dia, on vas ?  Cap al pic de la Dona ?\\\"_",
+    "choices": {
+      "Si, puja i baixa (mentida)": [
+        [
+          "sc",
+          "eq",
+          "\"mensonge\""
+        ]
+      ],
+      "No, cap al refugi del Alemany (veritat)": [
+        [
+          "sc",
+          "eq",
+          "\"verite\""
+        ]
+      ],
+      "No respondre i seguir el camí.": [
+        [
+          "sc",
+          "eq",
+          "\"nepasrepondre\""
+        ]
+      ]
+    }
+  },
+  "CaScene_mensonge": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"mensonge\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "L’home em dirigeix una mirada escèptica i continua la seva baixada.\n\nContinuo la pujada.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "2"
+        ]
+      ]
+    }
+  },
+  "CaScene_nepasrepondre": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"nepasrepondre\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "Segueixo amb la pujada ni sense respondre al home, que no pot impedir una reacció de sorpresa.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "2"
+        ]
+      ]
+    }
+  },
+  "CaScene_verite": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"verite\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "_\\\"- Que tinguis bona ruta.\\\"_\n\nSegueixo amb la pujada.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "2"
+        ]
+      ]
+    }
+  },
+  "CaScene3": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "2"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "borne.jpg",
+    "text": "Arribant a la Porteille de Mentet, una fita senyala la frontera amb França. El rellotge marca les 3.",
+    "choices": {
+      "Es massa tard per passar al Nord. Torno cap a Vallter.": [
+        [
+          "sc",
+          "eq",
+          "back-to-vallter"
+        ]
+      ],
+      "Segueixo.": [
+        [
+          "sc",
+          "eq",
+          "3"
+        ]
+      ],
+      "El vent bufa al coll. Em poso la meva jaqueta talla-vent per seguir el camí.": [
+        [
+          "sc",
+          "eq",
+          "3"
+        ],
+        [
+          "@if",
+          [
+            [
+              "equip",
+              "eq",
+              "\"tshirt\""
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "CaScene3b": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"back-to-vallter\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "Seguretat abans de tot. Baixo cap a Vallter i torno al cotxe fins i tot abans la posta del sol.\n\nPerò sé una cosa : ja hi tornaré.\n\nFi.",
+    "choices": {
+      "Tornar al inici": [
+        [
+          "sc",
+          "eq",
+          "0"
+        ]
+      ]
+    }
+  },
+  "CaScene4": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "3"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "vallee.jpg",
+    "text": "Al passar el coll es pot veure pel canto Nord un vall amb bosc tirant recta cap al poble de Mentet.\n\nA mesura que l’ombra l’invadeixi, la temperatura es fa més fresca.\nLes poques manxes de neu ara son geleres orgulloses.\nLa baixada es fa sense dificultat, els passos es segueixen amb seguretat fins l’entrada del bosc.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "4"
+        ]
+      ]
+    }
+  },
+  "CaScene5": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "4"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "bois.jpg",
+    "text": "El camí segueix tranquil·lament una riera que porta igualment les primeres marques del proper invern.\n\nLes marques es segueixen al llarg del sender.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "5"
+        ]
+      ]
+    }
+  },
+  "CaScene6": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "5"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "berger.jpg",
+    "text": "Una cabana apareix al fons a ma esquerra.",
+    "choices": {
+      "Esta fora del sender. Segueixo el meu camí sense hi fer cas.": [
+        [
+          "sc",
+          "eq",
+          "7"
+        ]
+      ],
+      "M’hi apropo.": [
+        [
+          "sc",
+          "eq",
+          "6"
+        ]
+      ]
+    }
+  },
+  "CaScene7": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "6"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "berger2.jpg",
+    "text": "Les persianes estan tancades.\nLa xemeneia no fa fum.\n\nNomés un crani de vaca aculleix els senderistes que passen.\n\nUna serradura sobre la porta.\nSembla la cabana del pastor.\nTancada, que no fa sorpresa.\n\nUns trossos bonics de llenya estan per la terra davant la cabana.\n\nA prop, sobre una gran pedra plana, es llegeix l’inscripciò gravada “Refugi a 250 m”",
+    "choices": {
+      "Segueixo amb la meva ruta.": [
+        [
+          "sc",
+          "eq",
+          "7"
+        ]
+      ],
+      "Recullo un tros de fusta abans d’anar mes endavant.": [
+        [
+          "sc",
+          "eq",
+          "7"
+        ]
+      ]
+    }
+  },
+  "CaScene8": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "7"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "alemany.jpg",
+    "text": "Trobo una nova cabana, oberta. Es el refugi de l’Alemany.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "8"
+        ]
+      ]
+    }
+  },
+  "CaScene9": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "8"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "interieur.jpg",
+    "text": "A dins, tota la comoditat d’un refugi lliure.\nXemeneia, taula, bancs, serra, escombra, pala, i lliteres.\nEn un racó de la cabana es troben rams de pins amb agulles encara verdes.\n\nEncara no son les 5 de la tarda, però el vall ja esta totalment en l’ombra.",
+    "choices": {
+      "Obro les persianes.": [
+        [
+          "sc",
+          "eq",
+          "9"
+        ]
+      ],
+      "Cal no perdre temps. Cal tallar fusta abans de que la nit caigui.": [
+        [
+          "sc",
+          "eq",
+          "9"
+        ]
+      ]
+    }
+  },
+  "CaScene10": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "9"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "Cap fusta seca a prop, i la majoria dels arbres al voltant de la cabana ja mostren marques de destral.\nNomés queden troncs enormes per la terra.\n\nComenço a serrar un d’ells.\n\nAquest tros es pesat i necessitara segurament ser tallat de nou a dins la cabana.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "10"
+        ]
+      ]
+    }
+  },
+  "CaScene11": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "10"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "A les 6 de la tarda, ja es fa fosc i et termòmetre a dins el refugi ronda els 0°C.\n\nComenço un foc amb pinyes i unes branques. La fusta esta verda i té dificultat per encendre’s.\n\nEncenc una espelma que poso en mig de la llar del foc. Les agulles de pins crepiten, resisteixen...",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "11"
+        ]
+      ]
+    }
+  },
+  "CaScene12": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "11"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "feu.jpg",
+    "text": "El foc finalment s’ha encès.\n\nIntrodueixo el primer tros de fusta i poso el segon a prop, amb l’esperança de fer-ho secar el mes aviat possible.\nLa llar del foc distribueix una calor agradable però que devalla molt ràpid a mesura que t’en allunyes.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "12"
+        ]
+      ]
+    }
+  },
+  "CaScene13": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "12"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "tisane.jpg",
+    "text": "Un cop el sopar ha acabat, encara no son les 9 del vespre però em preparo per entrar en el sac de dormir\n\nAbans d’això, tinc cura d’arreglar les coses, en previsió de possibles visitants nocturns.",
+    "choices": {
+      "Amago la motxilla sota el banc.": [
+        [
+          "sc",
+          "eq",
+          "13"
+        ],
+        [
+          "sac",
+          "eq",
+          "\"banc\""
+        ]
+      ],
+      "Penjo la motxilla a un dels claus clavats dels murs de la cabana.": [
+        [
+          "sc",
+          "eq",
+          "13"
+        ],
+        [
+          "sac",
+          "eq",
+          "\"clou\""
+        ]
+      ],
+      "Trec el menjar de la motxilla i el penjo d’un dels fils que creua la sala.": [
+        [
+          "sc",
+          "eq",
+          "13"
+        ],
+        [
+          "sac",
+          "eq",
+          "\"nourriture\""
+        ]
+      ]
+    }
+  },
+  "CaScene14nourrit": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "13"
+      ],
+      [
+        "sac",
+        "eq",
+        "\"nourriture\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "Amb el foc que es va consumint poc a poc, i unes mantes del refugi de sobres, la nit tindrà lloc sense cap problema de fred.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "14"
+        ]
+      ]
+    }
+  },
+  "CaScene14clou": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "13"
+      ],
+      [
+        "sac",
+        "eq",
+        "\"clou\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "En mig de la nit, uns sorollets es posen a molestar el meu son.\n\nObro un ull i vigilo el lloc.\nUn ratolí esta al voltant de la meva motxilla penjada i esta rosegant una de les meves barretes energètiques a traves d’una butxaca !\n\nPersegueixo la lladra i començo a penjar el menjar fora de la motxilla amb un fil.\n\nLa resta de la nit serà amb una tranquil·litat perfecta.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "14"
+        ]
+      ]
+    }
+  },
+  "CaScene14banc": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "13"
+      ],
+      [
+        "sac",
+        "eq",
+        "\"banc\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "text": "Al dia següent, el foc esta apagat, fan 4 graus a dintre i neva fora.\n\nComenço per recollir les meves coses i… quin HORROR !\n\nLes butxaques de la meva motxilla han sigut rosegades per totes bandes per visitors nocturns !\n\nAra una bona part de les meves reserves de menjar pot treure’s.\n\nMentre em queixo de aquest accident, acabo de preparar-me per la sortida.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "15"
+        ]
+      ]
+    }
+  },
+  "CaScene15": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "14"
+      ],
+      [
+        "sac",
+        "neq",
+        "\"banc\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "neige.jpg",
+    "text": "Al dia següent, el foc esta apagat, fan 4 graus a dintre i neva fora.\n\nEncenc el foc de nou i hi poso l’ultim tros de fusta, mentre el esmorzar\n\nApago el foc amb neu, oferint l’ultim tros de fusta als propers inquilins, recullo les coses i em preparo per la sortida.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "15"
+        ]
+      ]
+    }
+  },
+  "CaScene16": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "15"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "presque-mantet.jpg",
+    "text": "La neu deixa de caure i deixa pas a un cel blau.\n\nCap a baix s’endivinen unes cases.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "16"
+        ]
+      ]
+    }
+  },
+  "CaScene17": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "16"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "vue-mantet.jpg",
+    "text": "Es el poble de Mentet, banyat per la llum del sol de tardor.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "17"
+        ]
+      ]
+    }
+  },
+  "CaScene18": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "17"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "panneau.jpg",
+    "text": "Segueixo amb la baixada i arribo al poble.\n\nSon les 12 i mitja.",
+    "choices": {
+      "Endavant": [
+        [
+          "sc",
+          "eq",
+          "18"
+        ]
+      ]
+    }
+  },
+  "CaScene19": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "18"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"ca\""
+      ]
+    ],
+    "image": "mantet.jpg",
+    "text": "To be continued.",
+    "choices": {
+      "Tornar al inici": [
+        [
+          "sc",
+          "eq",
+          "0"
+        ]
+      ]
+    }
+  }
+}

@@ -5,9 +5,12 @@ function adjustimg(){
 }
 
 
-function reset_scenebox(){
+function reset_scenebox(cardIndex){
+   if (cardIndex === undefined)
+      console.alert('Missing cardIndex');
    $('#imagebox').html('');
    $('#dialogbox').html('');
+   $('#dialogbox').attr('cardIndex', cardIndex);
    $('#choicebox').html('');
    if (fullscreen == 1)
     screenfull.request($('#bodybox')[0]);
@@ -22,8 +25,6 @@ function set_bodybox(){
          '</div>'
    $('#bodybox').html(html)
    config_bodybox();
-
-
 
    console.log("reset bodybox")
 }

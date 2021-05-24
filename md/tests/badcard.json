@@ -1,0 +1,39 @@
+{
+  "Test2": {
+    "conditions": [
+      [
+        "lang",
+        "eq",
+        "fr"
+      ],
+      [
+        "@action",
+        "eq",
+        "toto"
+      ]
+    ],
+    "image": "image_chat",
+    "code": "function(){\nconsole.log('alert');\n}",
+    "text": "titi",
+    "audio": "music_bg",
+    "choices": {
+      "Test1": [
+        [
+          "lang",
+          "eq",
+          "ca"
+        ],
+        [
+          "@if",
+          [
+            [
+              "lang",
+              "eq",
+              "fr"
+            ]
+          ]
+        ]
+      ]
+    }
+  }
+}

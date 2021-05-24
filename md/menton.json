@@ -1,0 +1,74 @@
+{
+  "Test": {
+    "conditions": [
+      [
+        "@action",
+        "eq",
+        "\"start\""
+      ]
+    ],
+    "text": "Démarrer",
+    "choices": {
+      "Continuer.": [
+        [
+          "imprevus",
+          "eq",
+          "91"
+        ],
+        [
+          "@action",
+          "eq",
+          "\"visite-antoine\""
+        ]
+      ]
+    }
+  },
+  "Introduction": {
+    "conditions": [
+      [
+        "@action",
+        "eq",
+        "\"visite-antoine\""
+      ]
+    ],
+    "text": "Antoine n’avait changé en rien même après toutes ces années. Seul deux verres de lunettes s’étaient ajoutés à son portrait.\n\nCe détail mis à part, c’était le même.\n\nIl venait d’emménager au cours de l’année dans cet appartement au pied du Cap Martin, un peu vieillot mais fort agréable au demeurant, avec une petite vue mer et surtout sur les montagnes à l’est, qui baignaient alors dans la lumière orangée du couchant.",
+    "choices": {
+      "Au milieu de la conversation, mon regard fut attiré au loin...": [
+        [
+          "@action",
+          "eq",
+          "\"feu-plan-lion\""
+        ],
+        [
+          "imprevus",
+          "-",
+          "10"
+        ],
+        [
+          "@if",
+          [
+            [
+              "imprevus",
+              "gt",
+              "90"
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "Incendie-plan-lion": {
+    "conditions": [
+      [
+        "@action",
+        "eq",
+        "\"feu-plan-lion\""
+      ]
+    ],
+    "image": "bg3.png",
+    "text": "Dans le coin de mon oeil une imposante masse sombre attira soudain mon regard. Au loin la montagne était en proie aux flammes et je reconnus alors le Plan du Lion à travers un immense nuage de fumée noire.\nJe m’interrompis aussitôt devant l’envergure du feu.\n\n*- Comment s’est-il déclenché ?*\n*- Des gens sont-ils en danger ?*\n*- Sera-t-il maîtrisé avant de descendre jusqu’à la ville ?*\n\nS’il venait à se propager, nous serions les premiers menacés. Autour de moi, je ne trouvais que les mêmes regards interrogatifs.",
+    "choices": {
+      "Continuer.": []
+    }
+  }
+}

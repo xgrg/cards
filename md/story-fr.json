@@ -1,0 +1,883 @@
+{
+  "FrScene1": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "0"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "bg2.gif",
+    "text": "_13 heures 30, route de Vallter, Pyrénées Catalanes_\n\nLes degrés fondent à mesure que s’enchaînent les virages. A l’approche du parking quasi-vide de la station de Vallter 2000, le compteur indique 4 timides degrés.\n\nLe temps d’enfiler quelques couches supplémentaires, d’une dernière vérification du sac et d’un rapide casse-croûte et je serai prêt(e) à partir.",
+    "choices": {
+      "J’enfile mon coupe-vent.": [
+        [
+          "equip",
+          "eq",
+          "\"coupevent\""
+        ],
+        [
+          "sc",
+          "eq",
+          "1"
+        ],
+        [
+          "dice",
+          "eq",
+          "@dice"
+        ]
+      ],
+      "J’enfile polaire, doudoune et coupe-vent.": [
+        [
+          "equip",
+          "eq",
+          "\"polaire\""
+        ],
+        [
+          "sc",
+          "eq",
+          "1"
+        ]
+      ],
+      "Réflexion faite, je pars en t-shirt.": [
+        [
+          "equip",
+          "eq",
+          "\"tshirt\""
+        ],
+        [
+          "sc",
+          "eq",
+          "1"
+        ]
+      ]
+    }
+  },
+  "FrScene2": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "1"
+      ],
+      [
+        "equip",
+        "neq",
+        "\"polaire\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "vallter2.jpg",
+    "text": "_14 heures, départ de la station de Vallter_\n\nLe chemin débute en montée suivant le tracé du GR10.\nLa station s’éloigne progressivement dans le dos.\n\nBien que les télésièges soient à l’arrêt, quelques tâches de neige semblent signaler que la saison de ski est en phase d’approche.\nLa montée s’effectue sans encombres.",
+    "choices": {
+      "Continuer.": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ]
+      ],
+      "Le dé a fait plus de 50.": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ],
+        [
+          "@if",
+          [
+            [
+              "dice",
+              "get",
+              "50"
+            ]
+          ]
+        ]
+      ],
+      "Le dé a fait moins de 50.": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ],
+        [
+          "@if",
+          [
+            [
+              "dice",
+              "lt",
+              "50"
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "FrScene2avecpolaire": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "1"
+      ],
+      [
+        "equip",
+        "eq",
+        "\"polaire\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "vallter2.jpg",
+    "text": "_14 heures, départ de la station de Vallter_\n\nLe chemin débute en montée suivant le tracé du GR10.\nLa station s’éloigne progressivement dans le dos.\n\nBien que les télésièges soient à l’arrêt, quelques tâches de neige semblent signaler que la saison de ski est en phase d’approche.\nLa montée s’effectue sans encombres mais je transpire rapidement sous la polaire, doudone, etc.",
+    "choices": {
+      "La montée donne chaud. Je retire ma polaire.": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ]
+      ]
+    }
+  },
+  "FrScene2random": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "1"
+      ],
+      [
+        "@dice",
+        "gt",
+        "2"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "vallter2.jpg",
+    "text": "C'est un test !!",
+    "choices": {
+      "Continuer.": [
+        [
+          "sc",
+          "eq",
+          "\"scene_croise_marcheurs\""
+        ]
+      ]
+    }
+  },
+  "FrScene_croise_marcheurs": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"scene_croise_marcheurs\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "Je salue quelques marcheurs en les croisant dans leur descente.. C’est en effet davantage une heure de fin de parcours que de début...\n\nL’un d’entre eux, vêtu d’un combinaison de secouriste rouge, s’adresse à moi :\n\n_\\\"- Bon dia, on vas ?  Cap al pic de la Dona ?\\\"_",
+    "choices": {
+      "Si, puja i baixa (mensonge)": [
+        [
+          "sc",
+          "eq",
+          "\"mensonge\""
+        ]
+      ],
+      "No, cap al refugi del Alemany (vérité)": [
+        [
+          "sc",
+          "eq",
+          "\"verite\""
+        ]
+      ],
+      "Ne pas répondre et poursuivre sa route.": [
+        [
+          "sc",
+          "eq",
+          "\"nepasrepondre\""
+        ]
+      ]
+    }
+  },
+  "FrScene_mensonge": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"mensonge\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "L'homme me lance un regard sceptique et poursuit sa descente.\n\nJe poursuis la montée.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "2"
+        ]
+      ]
+    }
+  },
+  "FrScene_nepasrepondre": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"nepasrepondre\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "Je poursuis la montée sans adresser un regard à l'homme, qui montre une réaction de surprise.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "2"
+        ]
+      ]
+    }
+  },
+  "FrScene_verite": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"verite\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "_\\\"- Que tinguis bona ruta.\\\"_\n\nJe poursuis la montée.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "2"
+        ]
+      ]
+    }
+  },
+  "FrScene3": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "2"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "borne.jpg",
+    "text": "A l’arrivée à la Porteille de Mantet, une borne indique la frontière avec la France. La montre indique 15 heures.",
+    "choices": {
+      "Il est tard pour passer au Nord. Je redescends vers Vallter.": [
+        [
+          "sc",
+          "eq",
+          "\"back-to-vallter\""
+        ]
+      ],
+      "Je continue.": [
+        [
+          "sc",
+          "eq",
+          "3"
+        ]
+      ],
+      "Le vent souffle au col. J'enfile mon coupe-vent pour poursuivre la route.": [
+        [
+          "sc",
+          "eq",
+          "3"
+        ],
+        [
+          "@if",
+          [
+            [
+              "equip",
+              "eq",
+              "\"tshirt\""
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "FrScene3b": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "\"back-to-vallter\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "La sécurité avant tout. Je redescends vers Vallter et suis de retour à la voiture avant même le coucher du soleil.\n\nMais une chose est sûre : je reviendrai.\n\nFin.",
+    "choices": {
+      "Recommencer": [
+        [
+          "sc",
+          "eq",
+          "0"
+        ]
+      ]
+    }
+  },
+  "FrScene4": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "3"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "vallee.jpg",
+    "text": "Le passage du col laisse entrevoir du côté Nord une vallée boisée tirant droit vers le petit village de Mantet.\n\nA mesure que l’ombre la recouvre, la température se fait de plus en plus fraîche.\nLes taches éparses de neige sont à présent de fiers névés.\nLa descente est sans difficulté, le pas est sûr jusqu’à atteindre l’orée du bois.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "4"
+        ]
+      ]
+    }
+  },
+  "FrScene5": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "4"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "bois.jpg",
+    "text": "Le chemin longe sagement un ruisseau portant également les premières marques de l’hiver approchant.\n\nLes balises se suivent le long du sentier.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "5"
+        ]
+      ]
+    }
+  },
+  "FrScene6": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "5"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "berger.jpg",
+    "text": "Une cabane apparaît au fond sur la gauche.",
+    "choices": {
+      "C’est hors du sentier. Je poursuis ma route sans y prêter attention.": [
+        [
+          "sc",
+          "eq",
+          "7"
+        ]
+      ],
+      "Je me rapproche.": [
+        [
+          "sc",
+          "eq",
+          "6"
+        ]
+      ]
+    }
+  },
+  "FrScene7": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "6"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "berger2.jpg",
+    "text": "Les volets sont fermés.\nLa cheminée ne fume pas.\n\nSeul un crâne de vache accueille les randonneurs de passage.\n\nUne serrure sur la porte.\nCe doit être la cabane du berger.\nFermée, sans surprise.\n\nQuelques beaux morceaux de bois jonchent le sol devant la cabane.\n\nA proximité, sur une large pierre plate, se lit l’inscription gravée _“Refuge à 250 m”_.",
+    "choices": {
+      "Je reprends ma route": [
+        [
+          "sc",
+          "eq",
+          "7"
+        ]
+      ],
+      "Je ramasse un morceau de bois avant de poursuivre mon chemin": [
+        [
+          "sc",
+          "eq",
+          "7"
+        ]
+      ]
+    }
+  },
+  "FrScene8": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "7"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "alemany.jpg",
+    "text": "Je tombe sur une nouvelle cabane, ouverte. C’est le _refuge de l’Alemany_.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "8"
+        ]
+      ]
+    }
+  },
+  "FrScene9": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "8"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "interieur.jpg",
+    "text": "A l’intérieur, tout le confort d’un refuge libre.\nCheminée, table, bancs, scie, balai, pelle, et couchages superposés.\nDans un coin de la cabane repose un tas de branches de pins aux aiguilles encore vertes.\n\nIl n’est pas encore 17 heures mais la vallée est déjà plongée dans l’ombre.",
+    "choices": {
+      "J’ouvre les volets": [
+        [
+          "sc",
+          "eq",
+          "9"
+        ]
+      ],
+      "Pas de temps à perdre. Il faut couper du bois avant que la nuit ne tombe.": [
+        [
+          "sc",
+          "eq",
+          "9"
+        ]
+      ]
+    }
+  },
+  "FrScene10": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "9"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "Pas de bois sec à proximité et la plupart des arbres aux alentours de la cabane présentent déjà des marques de prélèvement.\nNe restent que d’énormes troncs au sol.\n\nJ’entreprends de scier l’un d’entre eux à son extrémité.\n\nLa pièce est lourde et demandera certainement à être débitée de nouveau à l’intérieur de la cabane.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "10"
+        ]
+      ]
+    }
+  },
+  "FrScene11": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "10"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "A 18 heures, il fait déjà nuit et le thermomètre à l’intérieur du refuge ne dépasse guère 0°C.\n\nJe démarre un feu avec des pommes de pins et quelques branches. Le bois est vert et peine à prendre feu.\n\nJ’allume une bougie que je place au coeur du foyer. Les aiguilles crépitent, résistent...",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "11"
+        ]
+      ]
+    }
+  },
+  "FrScene12": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "11"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "feu.jpg",
+    "text": "Le feu finit par démarrer.\n\nJ’insère le premier morceau de bûche et place le second à proximité, dans l’espoir de le faire sécher le plus possible.\nLe poêle dispense une chaleur agréable mais qui chute très rapidement dès lors qu’on s’en écarte.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "12"
+        ]
+      ]
+    }
+  },
+  "FrScene13": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "12"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "tisane.jpg",
+    "text": "Une fois le dîner terminé, il n’est pas encore 21 heures mais je m’apprête à enfiler mon sac de couchage.\n\nAvant cela, je prends soin de ranger les affaires, en prévision d’éventuels visiteurs nocturnes.",
+    "choices": {
+      "Je cache le sac-à-dos sous un banc.": [
+        [
+          "sc",
+          "eq",
+          "13"
+        ],
+        [
+          "sac",
+          "eq",
+          "\"banc\""
+        ]
+      ],
+      "J’accroche le sac à l’un des clous plantés aux murs de la cabane": [
+        [
+          "sc",
+          "eq",
+          "13"
+        ],
+        [
+          "sac",
+          "eq",
+          "\"clou\""
+        ]
+      ],
+      "Je retire la nourriture du sac et la suspends à l’un des fils traversant la pièce.": [
+        [
+          "sc",
+          "eq",
+          "13"
+        ],
+        [
+          "sac",
+          "eq",
+          "\"nourriture\""
+        ]
+      ]
+    }
+  },
+  "FrScene14nourrit": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "13"
+      ],
+      [
+        "sac",
+        "eq",
+        "\"nourriture\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "Avec le feu se consumant tranquillement, et les quelques couvertures du refuge en supplément, la nuit passera en étant protégé du froid.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "14"
+        ]
+      ]
+    }
+  },
+  "FrScene14clou": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "14"
+      ],
+      [
+        "sac",
+        "eq",
+        "\"clou\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "Au milieu de la nuit, de petits bruits perturbent mon sommeil.\n\nJ'ouvre l'oeil et inspecte les lieux.\nUne souris est affairée autour de mon sac pendu et grignote une de mes barres énergétiques à travers l'une des poches !\n\nJe chasse la voleuse et entreprends de suspendre la nourriture hors du sac au bout d'un fil.\n\nLe reste de la nuit sera d'une tranquilité absolue.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "14"
+        ]
+      ]
+    }
+  },
+  "FrScene14banc": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "13"
+      ],
+      [
+        "sac",
+        "eq",
+        "\"banc\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "text": "Le lendemain, le feu est éteint, il fait 4 degrés à l’intérieur et il neige au dehors.\n\nJ'entreprends de rassembler mes affaires et... HORREUR !\n\nLes poches de mon sac ont été rongées de toutes parts par des visiteurs nocturnes !\n\nUne bonne partie de mes réserves en nourriture est bonne à être jetée.\n\nTout en pestant contre cette mésaventure, je finis de me préparer pour le départ.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "15"
+        ]
+      ]
+    }
+  },
+  "FrScene15": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "14"
+      ],
+      [
+        "sac",
+        "neq",
+        "\"banc\""
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "neige.jpg",
+    "text": "Le lendemain, le feu est éteint, il fait 4 degrés à l’intérieur et il neige au dehors.\n\nJe rallume le feu et y place le dernier morceau de bûche, le temps du petit-déjeuner.\n\nJ’éteins le feu avec de la neige, léguant la dernière bûche aux prochains occupants, rassemble les affaires et me prépare pour le départ.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "15"
+        ]
+      ]
+    }
+  },
+  "FrScene16": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "15"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "presque-mantet.jpg",
+    "text": "La neige fait place au grand ciel bleu.\n\nEn contrebas se devinent quelques maisons.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "16"
+        ]
+      ]
+    }
+  },
+  "FrScene17": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "16"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "vue-mantet.jpg",
+    "text": "Il s’agit du village de Mantet, baigné par la lumière du soleil automnal.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "17"
+        ]
+      ]
+    }
+  },
+  "FrScene18": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "17"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "panneau.jpg",
+    "text": "Je poursuis la descente et parviens au village.\n\nIl est 12 heures 30.",
+    "choices": {
+      "Continuer": [
+        [
+          "sc",
+          "eq",
+          "18"
+        ]
+      ]
+    }
+  },
+  "FrScene19": {
+    "conditions": [
+      [
+        "sc",
+        "eq",
+        "18"
+      ],
+      [
+        "lang",
+        "eq",
+        "\"fr\""
+      ]
+    ],
+    "image": "mantet.jpg",
+    "text": "A suivre.",
+    "choices": {
+      "Recommencer": [
+        [
+          "sc",
+          "eq",
+          "0"
+        ]
+      ]
+    }
+  }
+}
