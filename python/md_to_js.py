@@ -27,10 +27,9 @@ def markdown_to_js(md_fp, js_fp, beautify=False):
             else:
                 body[k] = v
 
-    # # save to JSON if necessary
-    # json_fp = md_fp.replace('.md','.json')
-    # json.dump(body, open(json_fp, 'w'), indent=2, ensure_ascii=False,
-    #           encoding ='utf-8')
+    # save to JSON if necessary
+    json_fp = md_fp.replace('.md', '.json')
+    json.dump(body, open(json_fp, 'w'), indent=2, ensure_ascii=False)
 
     # Generates JS from Json
     js = cards.json_to_javascript(body)
