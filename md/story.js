@@ -9,7 +9,7 @@ scene0 = {
  0, instantly)
   },
   choices:[
-   ["Démarrer1", 
+   ["Démarrer", 
       function(t){
        t["@action"] = "begin";
       cond_dict=[];
