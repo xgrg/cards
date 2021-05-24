@@ -12,13 +12,13 @@ done = []
 errors = []
 md_files = glob('./build/md/*.md')
 for md in md_files:
-    print ""
-    print '###',md,'###'
-    cmd = 'python python/md_to_js.py %s --verbose'%md
-    print cmd
+    print("")
+    print('###', md, '###')
+    cmd = 'python python/md_to_js.py %s --verbose' % md
+    print(cmd)
     res = os.system(cmd)
-    if (res==0):
-        print md, 'converted successfully'
+    if res == 0:
+        print(md, 'converted successfully')
         done.append(md)
     else:
         errors.append(md)
@@ -26,10 +26,10 @@ for md in md_files:
 os.system('rm build/md/*.md')
 
 # summary
-print '\n\n===================================================================='
-print 'The following files were correctly processed: \n%s'%', '.join(done)
-print '\nThe following files resulted with errors: \n%s'%', '.join(errors)
-print '========================================================================'
+print('\n\n==================================================================')
+print('The following files were correctly processed: \n%s' % ', '.join(done))
+print('\nThe following files resulted with errors: \n%s' % ', '.join(errors))
+print('======================================================================')
 
 
 # commit this folder to gh-pages
@@ -38,7 +38,8 @@ inputdir = basedir
 outputdir = osp.join(basedir, 'build')
 github_pages_branch = 'gh-pages'
 
-
-os.system('ghp-import -m "Generate JSVN site" -b %s %s'%(github_pages_branch, outputdir))
-os.system('git push origin %s'%github_pages_branch)
+cmd = 'ghp-import -m "Generate JSVN site" -b %s %s' \
+      % (github_pages_branch, outputdir)
+os.system(cmd)
+os.system('git push origin %s' % github_pages_branch)
 os.system('rm -rf build/')
